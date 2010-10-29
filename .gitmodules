@@ -1,0 +1,12 @@
+[submodule "vim/bundle/sunburst"]
+	path = vim/bundle/sunburst
+	url = git://github.com/gigamo/sunburst.vim.git
+[submodule "vim/bundle/vim-haml"]
+	path = vim/bundle/vim-haml
+	url = http://github.com/tpope/vim-haml.git
+[submodule "vim/bundle/vividchalk"]
+	path = vim/bundle/vividchalk
+	url = http://github.com/tpope/vim-vividchalk.git
+[submodule "vim/bundle/nerdtree"]
+	path = vim/bundle/nerdtree
+	url = http://github.com/scrooloose/nerdtree.git

@@ -1,0 +1,27 @@
+#-------------------
+# Personnal Aliases
+#-------------------
+
+alias rm='rm -i'
+alias cp='cp -i'
+alias mv='mv -i'
+# -> Prevents accidentally clobbering files.
+alias mkdir='mkdir -p'
+alias df='df -h'
+
+export TERM="xterm-color"
+export CLICOLOR="true"
+export LSCOLORS="exfxcxdxbxegedabagacad"
+
+alias ll='ls -l'
+alias la='ls -A'
+alias lla='ls -lA'
+alias l='ls -CF'
+
+alias more='less'
+export PAGER=less
+export LESSCHARSET='latin1'
+export LESSOPEN='|/usr/bin/lesspipe.sh %s 2>&-'
+   # Use this if lesspipe.sh exists
+export LESS='-i -w  -z-4 -g -e -M -X -F -R -P%t?f%f \
+:stdin .?pb%pb\%:?lbLine %lb:?bbByte %bb:-...'
