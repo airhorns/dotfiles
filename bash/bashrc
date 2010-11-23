@@ -84,6 +84,7 @@ if [ -n "$force_color_prompt" ]; then
     fi
 fi
 
+GIT_PS1_SHOWDIRTYSTATE=true
 if [ "$color_prompt" = yes ]; then
 		if [ -f "/usr/local/etc/bash_completion.d/git-completion.bash" ]; then
 			source "/usr/local/etc/bash_completion.d/git-completion.bash"
@@ -103,3 +104,6 @@ if [ -f "$HOME/dotfiles/bash/bash_aliases" ]; then
 fi
 
 export PATH="$HOME/bin":$PATH:"/usr/local/share/npm/bin"
+export EDITOR="vim"
+export BUNDLE_EDITOR="mvim"
+export NODE_PATH="/usr/local/lib/node":$NODE_PATH

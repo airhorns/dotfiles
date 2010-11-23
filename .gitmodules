@@ -16,3 +16,12 @@
 [submodule "vim/bundle/rooter"]
 	path = vim/bundle/rooter
 	url = http://github.com/airblade/vim-rooter.git
+[submodule "vim/bundle/nerdcommenter"]
+	path = vim/bundle/nerdcommenter
+	url = http://github.com/scrooloose/nerdcommenter.git
+[submodule "vim/bundle/neocomplcache"]
+	path = vim/bundle/neocomplcache
+	url = http://github.com/Shougo/neocomplcache.git
+[submodule "vim/bundle/supertab"]
+	path = vim/bundle/supertab
+	url = http://github.com/ervandew/supertab.git

@@ -11,3 +11,8 @@ set lines=40 columns=200          " Window dimensions.
 set guioptions-=r                 " Don't show right scrollbar
 
 colorscheme sunburst
+
+nmap <silent> <leader>sv :so ~/.vimrc<CR>:so ~/.gvimrc<CR>
+
+" Project Tree
+autocmd VimEnter * NERDTree

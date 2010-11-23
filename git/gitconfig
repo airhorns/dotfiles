@@ -1,0 +1,27 @@
+[user]
+	name = Harry Brundage
+	email = harry@skylightlabs.ca
+[github]
+	user = hornairs
+	token = d37828b3b24df7ce2efc91a9ceee66cb
+[color]
+  branch = auto
+  diff = auto
+  status = auto
+[color "branch"]
+  current = yellow reverse
+  local = yellow 
+  remote = green
+[color "diff"]
+  meta = yellow bold
+  frag = magenta bold
+  old = red bold
+  new = green bold
+[color "status"]
+  added = yellow
+  changed = green
+  untracked = cyan
+[core]
+	excludesfile = ~/.gitignore
+[alias]
+	remove-missing = "!git ls-files -d -z | xargs -0 git update-index --remove"
