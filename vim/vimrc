@@ -56,14 +56,17 @@ set autoread
 " UNCOMMENT TO USE
 set tabstop=2                    " Global tab width.
 set shiftwidth=2                 " And again, related.
-set noexpandtab                  " Use spaces instead of tabs
+set expandtab                  " Use spaces instead of tabs
 
 set laststatus=2                  " Show the status line all the time
 " Useful status information at bottom of screen
 set statusline=[%n]\ %<%.99f\ %h%w%m%r%y\ %{fugitive#statusline()}%{exists('*CapsLockStatusline')?CapsLockStatusline():''}%=%-16(\ %l,%c-%v\ %)%P
 
 " Or use vividchalk
-colorscheme topfunky-light
+" colorscheme topfunky-light
+colorscheme sunburst
+"colors liquidcarbon
+"let g:liquidcarbon_high_contrast = 1
 
 " Tab mappings.
 map <leader>tt :tabnew<cr>
@@ -86,9 +89,12 @@ nnoremap ; :
 " vnoremap ; :
 vnoremap : ;
 
+au BufRead,BufNewFile *.scss set filetype=scss
+au BufNewFile,BufRead *.mustache  setf mustache
+au BufNewFile,BufRead *.bars      setf mustache
 " Automatic fold settings for specific files. Uncomment to use.
-" autocmd FileType ruby setlocal foldmethod=syntax
-" autocmd FileType css  setlocal foldmethod=indent shiftwidth=2 tabstop=2
+"autocmd FileType ruby setlocal foldmethod=syntax
+" "autocmd FileType css  setlocal foldmethod=indent shiftwidth=2 tabstop=2
 
 " For the MakeGreen plugin and Ruby RSpec. Uncomment to use.
 autocmd BufNewFile,BufRead *_spec.rb compiler rspec
@@ -102,8 +108,23 @@ autocmd BufNewFile,BufRead *_spec.rb compiler rspec
 " inoremap <down> <nop>
 " inoremap <left> <nop>
 " inoremap <right> <nop>
+
+" reflow paragraph with Q in normal and visual mode
+nnoremap Q gqap
+vnoremap Q gq
+
+" sane movement with wrap turned on
 nnoremap j gj
 nnoremap k gk
+vnoremap j gj
+vnoremap k gk
+nnoremap <Down> gj
+nnoremap <Up> gk
+vnoremap <Down> gj
+vnoremap <Up> gk
+inoremap <Down> <C-o>gj
+inoremap <Up> <C-o>gk
+
 
 " Easy removal of trailing whitespace
 nnoremap <leader>W :%s/\s\+$//<cr>:let @/=''<CR>
@@ -121,6 +142,21 @@ map <Leader>n :NERDTreeToggle<CR>
 " Bubble single lines
 nmap <C-Up> [e
 nmap <C-Down> ]e
+
 " Bubble multiple lines
 vmap <C-Up> [egv
 vmap <C-Down> ]egv
+
+" Helper to convert coffeescript files
+command! Coffeize  %s/;// | %s/\/\//#/ | %s/},\?// | %s/function\s*(\(.*\))\s*{/(\1) ->/ | %s/\s\+$// | noh
+" Closetag conf
+let g:closetag_html_style=1 
+augroup mkd
+	autocmd BufRead *.mkd  set ai formatoptions=tcroqn2 comments=n:&gt;
+augroup END
+
+" Indentations while keeping selection
+nmap <D-[> <<
+nmap <D-]> >>
+vmap <D-[> <gv
+vmap <D-]> >gv

@@ -8,11 +8,132 @@ set guioptions-=T                 " Hide toolbar.
 set background=light              " Background.
 set lines=40 columns=200          " Window dimensions.
 
-set guioptions-=r                 " Don't show right scrollbar
+"set guioptions-=r                 " Don't show right scrollbar
+" Start without the toolbar
+set guioptions-=T
 
+if has("gui_macvim")
+  " Fullscreen takes up entire screen
+  set fuoptions=maxhorz,maxvert
+
+  " Command-/ to toggle comments
+  map <D-/> <plug>NERDCommenterToggle<CR>
+endif
+
+" C-TAB and C-SHIFT-TAB cycle tabs forward and backward
+nmap <c-tab> :tabnext<cr>
+imap <c-tab> <c-o>:tabnext<cr>
+vmap <c-tab> <c-o>:tabnext<cr>
+nmap <c-s-tab> :tabprevious<cr>
+imap <c-s-tab> <c-o>:tabprevious<cr>
+vmap <c-s-tab> <c-o>:tabprevious<cr>
+
+" C-# switches to tab
+nmap <d-1> 1gt
+nmap <d-2> 2gt
+nmap <d-3> 3gt
+nmap <d-4> 4gt
+nmap <d-5> 5gt
+nmap <d-6> 6gt
+nmap <d-7> 7gt
+nmap <d-8> 8gt
+nmap <d-9> 9gt
+
+"colorscheme liquidcarbon
 colorscheme sunburst
 
 nmap <silent> <leader>sv :so ~/.vimrc<CR>:so ~/.gvimrc<CR>
+nmap <silent> <leader>egv :e ~/.gvimrc<CR>
 
 " Project Tree
-autocmd VimEnter * NERDTree
+" autocmd VimEnter * NERDTree
+
+" Disable netrw's autocmd, since we're ALWAYS using NERDTree
+
+let g:NERDTreeHijackNetrw = 0
+
+" If the parameter is a directory, cd into it
+function s:CdIfDirectory(directory)
+  if isdirectory(a:directory)
+    call ChangeDirectory(a:directory)
+  endif
+endfunction
+
+" NERDTree utility function
+function s:UpdateNERDTree(stay)
+  if exists("t:NERDTreeBufName")
+    if bufwinnr(t:NERDTreeBufName) != -1
+      NERDTree
+      if !a:stay
+        wincmd p
+      end
+    endif
+  endif
+endfunction
+
+" Utility functions to create file commands
+function s:CommandCabbr(abbreviation, expansion)
+  execute 'cabbrev ' . a:abbreviation . ' <c-r>=getcmdpos() == 1 && getcmdtype() == ":" ? "' . a:expansion . '" : "' . a:abbreviation . '"<CR>'
+endfunction
+
+function s:FileCommand(name, ...)
+  if exists("a:1")
+    let funcname = a:1
+  else
+    let funcname = a:name
+  endif
+
+  execute 'command -nargs=1 -complete=file ' . a:name . ' :call ' . funcname . '(<f-args>)'
+endfunction
+
+function s:DefineCommand(name, destination)
+  call s:FileCommand(a:destination)
+  call s:CommandCabbr(a:name, a:destination)
+endfunction
+
+" Public NERDTree-aware versions of builtin functions
+function ChangeDirectory(dir, ...)
+  execute "cd " . a:dir
+  let stay = exists("a:1") ? a:1 : 1
+  call s:UpdateNERDTree(stay)
+endfunction
+
+function Touch(file)
+  execute "!touch " . a:file
+  call s:UpdateNERDTree(1)
+endfunction
+
+function Remove(file)
+  let current_path = expand("%")
+  let removed_path = fnamemodify(a:file, ":p")
+
+  if (current_path == removed_path) && (getbufvar("%", "&modified"))
+    echo "You are trying to remove the file you are editing. Please close the buffer first."
+  else
+    execute "!rm " . a:file
+  endif
+endfunction
+
+function Edit(file)
+  if exists("b:NERDTreeRoot")
+    wincmd p
+  endif
+
+  execute "e " . a:file
+
+ruby << RUBY
+  destination = File.expand_path(VIM.evaluate(%{system("dirname " . a:file)}))
+  pwd         = File.expand_path(Dir.pwd)
+  home        = pwd == File.expand_path("~")
+
+  if home || Regexp.new("^" + Regexp.escape(pwd)) !~ destination
+    VIM.command(%{call ChangeDirectory(system("dirname " . a:file), 0)})
+  end
+RUBY
+endfunction
+
+" Define the NERDTree-aware aliases
+call s:DefineCommand("cd", "ChangeDirectory")
+call s:DefineCommand("touch", "Touch")
+call s:DefineCommand("rm", "Remove")
+call s:DefineCommand("e", "Edit")
