@@ -64,7 +64,8 @@ set expandtab                  " Use spaces instead of tabs
 
 set laststatus=2                  " Show the status line all the time
 " Useful status information at bottom of screen
-set statusline=[%n]\ %<%.99f\ %h%w%m%r%y\ %{fugitive#statusline()}%{exists('*CapsLockStatusline')?CapsLockStatusline():''}%=%-16(\ %l,%c-%v\ %)%P
+set statusline=[%n]\ %<%.99f\ %h%w%m%r%y\ %{fugitive#statusline()}%{exists('*CapsLockStatusline')?CapsLockStatusline():''}%=%-16(\ %l,%c-%v\ %)%P%{SyntasticStatuslineFlag()}
+
 
 " Or use vividchalk
 " colorscheme topfunky-light
@@ -161,6 +162,8 @@ command! Coffeize  %s/;//ge | %s/\/\//#/ge | %s/},\?//ge | %s/function\s*(\(.*\)
 
 " Closetag conf
 let g:closetag_html_style=1 
+" Syntastic conf
+let g:syntastic_enable_signs=1
 
 autocmd BufRead,BufNewFile *.{md,markdown,mdown,mkd,mkdn} set ft=markdown ai formatoptions=tcroqn2 comments=n:&gt spell
 
@@ -176,7 +179,6 @@ cabbrev w!! w !sudo tee % > /dev/null<CR>:e!<CR><CR>
 " OS X only due to use of `open`. Adapted from
 " http://vim.wikia.com/wiki/Open_a_web-browser_with_the_URL_in_the_current_line
 " Uses John Gruber's URL regexp: http://daringfireball.net/2010/07/improved_regex_for_matching_urls
-
 ruby << EOF
   def open_uri
     re = %r{(?i)\b((?:[a-z][\w-]+:(?:/{1,3}|[a-z0-9%])|www\d{0,3}[.]|[a-z0-9.\-]+[.][a-z]{2,4}/)(?:[^\s()<>]+|\((?:[^\s()<>]+|(?:\([^\s()<>]+\)))*\))+(?:\((?:[^\s()<>]+|(?:\([^\s()<>]+\)))*\)|[^\s`!()\[\]{};:'".,<>?«»“”‘’]))}
