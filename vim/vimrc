@@ -94,13 +94,19 @@ nnoremap ; :
 " vnoremap ; :
 vnoremap : ;
 
-au BufRead,BufNewFile *.scss      setf scss
-au BufNewFile,BufRead *.mustache  setf mustache
-au BufNewFile,BufRead *.bars      setf mustache
-au BufNewFile,BufRead *.ru        setf ruby
-au BufNewFile,BufRead Rakefile    setf ruby
-au BufNewFile,BufRead Guardfile   setf ruby
-au BufNewFile,BufRead Gemfile     setf ruby
+" Extra syntaxes
+au BufRead,BufNewFile *.scss      set filetype=scss
+au BufNewFile,BufRead *.mustache  set filetype=mustache
+au BufNewFile,BufRead *.bars      set filetype=mustache
+au BufNewFile,BufRead *.ru        set filetype=ruby
+au BufNewFile,BufRead Rakefile    set filetype=ruby
+au BufNewFile,BufRead Guardfile   set filetype=ruby
+au BufNewFile,BufRead Gemfile     set filetype=ruby
+
+" Indent guides
+let g:indent_guides_start_level = 2
+au BufNewFile,BufRead *.coffee IndentGuidesEnable
+
 
 " Automatic fold settings for specific files. Uncomment to use.
 " autocmd FileType ruby setlocal foldmethod=syntax
