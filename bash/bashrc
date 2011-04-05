@@ -103,7 +103,7 @@ if [ -f "$HOME/dotfiles/bash/bash_aliases" ]; then
     . "$HOME/dotfiles/bash/bash_aliases"
 fi
 
-export PATH="$HOME/bin":$PATH:"/usr/local/share/npm/bin"
+export PATH="$HOME/bin":"/usr/local/bin":$PATH:"/usr/local/share/npm/bin"
 export EDITOR="vim"
 export BUNDLE_EDITOR="mvim"
 export NODE_PATH="/usr/local/lib/node":$NODE_PATH
