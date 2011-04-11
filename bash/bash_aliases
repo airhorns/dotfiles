@@ -11,11 +11,10 @@ alias df='df -h'
 
 export TERM="xterm-color"
 export CLICOLOR="true"
-export LSCOLORS="exfxcxdxbxegedabagacad"
-
-alias ll='ls -l'
+# export LSCOLORS="exfxcxdxbxegedabagacad"
+alias ls='ls --color'
+alias ll='ls -lA'
 alias la='ls -A'
-alias lla='ls -lA'
 alias l='ls -CF'
 
 alias more='less'
