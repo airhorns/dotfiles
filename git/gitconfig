@@ -3,7 +3,7 @@
 	email = harry.brundage@gmail.com
 [github]
 	user = hornairs
-	token = d37828b3b24df7ce2efc91a9ceee66cb
+	token = 0663246e684c2b70c5e5eb7943f79bd8
 [color]
   branch = auto
   diff = auto
@@ -22,7 +22,7 @@
   changed = green
   untracked = cyan
 [core]
-	excludesfile = ~/.gitignore
+	excludesfile = /Users/hornairs/.gitignore
 [alias]
 	remove-missing = "!git ls-files -d -z | xargs -0 git update-index --remove"
   # I like using the interactive mode to make complex commits

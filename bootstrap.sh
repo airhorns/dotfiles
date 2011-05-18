@@ -9,3 +9,5 @@ ln -s ~/dotfiles/vim/vimrc ../.vimrc
 ln -s ~/dotfiles/vim/ ../.vim
 ln -s ~/dotfiles/screenrc ../.screenrc
 ln -s ~/dotfiles/toprc ../.toprc
+
+git config --global core.excludesfile ~/.gitignore

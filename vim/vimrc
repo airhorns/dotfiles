@@ -56,7 +56,7 @@ set directory=$HOME/.vim/tmp//,.  " Keep swap files in one location
 
 " Automatically update buffers when the filesystem file changes (Coffeescript
 " and such)
-set autoread 
+set autoread
 " UNCOMMENT TO USE
 set tabstop=2                    " Global tab width.
 set shiftwidth=2                 " And again, related.
@@ -69,7 +69,7 @@ set statusline=[%n]\ %<%.99f\ %h%w%m%r%y\ %{fugitive#statusline()}%{exists('*Cap
 
 " Or use vividchalk
 " colorscheme topfunky-light
-colorscheme sunburst
+colorscheme jellybeans
 "colors liquidcarbon
 "let g:liquidcarbon_high_contrast = 1
 
@@ -108,6 +108,17 @@ let g:indent_guides_start_level = 2
 au BufNewFile,BufRead *.coffee IndentGuidesEnable
 au BufNewFile,BufRead *.py IndentGuidesEnable
 
+" Markdown handy stuff
+au BufRead,BufNewFile *.{md,markdown,mdown,mkd,mkdn} set ft=markdown ai formatoptions=tcroqn2 comments=n:&gt spell
+
+" Higlight trailing whitespace
+"highlight ExtraWhitespace ctermbg=red guibg=red
+"au ColorScheme * highlight ExtraWhitespace guibg=red
+"au BufEnter * match ExtraWhitespace /\s\+$/
+"au InsertEnter * match ExtraWhitespace /\s\+\%#\@<!$/
+"au InsertLeave * match ExtraWhiteSpace /\s\+$/
+" Easy removal of trailing whitespace
+nnoremap <leader>W :%s/\s\+$//<cr>:let @/=''<CR>
 
 " Automatic fold settings for specific files. Uncomment to use.
 " autocmd FileType ruby setlocal foldmethod=syntax
@@ -142,9 +153,6 @@ vnoremap <Up> gk
 inoremap <Down> <C-o>gj
 inoremap <Up> <C-o>gk
 
-
-" Easy removal of trailing whitespace
-nnoremap <leader>W :%s/\s\+$//<cr>:let @/=''<CR>
 inoremap jj <ESC>
 
 " Quickly edit/reload the vimrc file
@@ -155,7 +163,6 @@ nmap <silent> <leader>sv :so ~/.vimrc<CR>
 let NERDTreeIgnore=['\.rbc$', '\~$']
 map <Leader>n :NERDTreeToggle<CR>
 
-" Unimpaired configuration
 " Bubble single lines
 nmap <C-Up> [e
 nmap <C-Down> ]e
@@ -165,14 +172,13 @@ vmap <C-Up> [egv
 vmap <C-Down> ]egv
 
 " Helper to convert coffeescript files
-command! Coffeize  %s/;//ge | %s/\/\//#/ge | %s/},\?//ge | %s/function\s*(\(.*\))\s*{/(\1) ->/ge | %s/\s\+$//ge | noh
+command! Coffeize  %s/;//e | %s/\/\//#/e | %s/},\?//e | %s/function\s*(\(.*\))\s*{/(\1) ->/e | %s/\s\+$//e | %s/===/==/e | %s/\!==/!=/e | noh
 
 " Closetag conf
-let g:closetag_html_style=1 
+let g:closetag_html_style=1
 " Syntastic conf
 let g:syntastic_enable_signs=1
 
-autocmd BufRead,BufNewFile *.{md,markdown,mdown,mkd,mkdn} set ft=markdown ai formatoptions=tcroqn2 comments=n:&gt spell
 
 " Indentations while keeping selection
 nmap <D-[> <<
