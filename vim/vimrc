@@ -102,6 +102,7 @@ au BufNewFile,BufRead *.ru        set filetype=ruby
 au BufNewFile,BufRead Rakefile    set filetype=ruby
 au BufNewFile,BufRead Guardfile   set filetype=ruby
 au BufNewFile,BufRead Gemfile     set filetype=ruby
+au BufNewFile,BufRead *.{peg,leg,language} set filetype=peg syntax=peg
 
 " Indent guides
 let g:indent_guides_start_level = 2
@@ -109,14 +110,16 @@ au BufNewFile,BufRead *.coffee IndentGuidesEnable
 au BufNewFile,BufRead *.py IndentGuidesEnable
 
 " Markdown handy stuff
-au BufRead,BufNewFile *.{md,markdown,mdown,mkd,mkdn} set ft=markdown ai formatoptions=tcroqn2 comments=n:&gt spell
+au BufRead,BufNewFile *.{md,markdown,mdown,mkd,mkdn,percolate} set ft=markdown ai formatoptions=tcroqn2 comments=n:&gt spell
+au BufRead,BufNewFile *.percolate set syntax=percolate
+
 
 " Higlight trailing whitespace
-"highlight ExtraWhitespace ctermbg=red guibg=red
-"au ColorScheme * highlight ExtraWhitespace guibg=red
-"au BufEnter * match ExtraWhitespace /\s\+$/
-"au InsertEnter * match ExtraWhitespace /\s\+\%#\@<!$/
-"au InsertLeave * match ExtraWhiteSpace /\s\+$/
+highlight ExtraWhitespace ctermbg=red guibg=red
+au ColorScheme * highlight ExtraWhitespace guibg=red
+au BufEnter * match ExtraWhitespace /\s\+$/
+au InsertEnter * match ExtraWhitespace /\s\+\%#\@<!$/
+au InsertLeave * match ExtraWhiteSpace /\s\+$/
 " Easy removal of trailing whitespace
 nnoremap <leader>W :%s/\s\+$//<cr>:let @/=''<CR>
 
@@ -154,6 +157,9 @@ inoremap <Down> <C-o>gj
 inoremap <Up> <C-o>gk
 
 inoremap jj <ESC>
+
+" Remove debugger lines
+nmap <silent> <leader>rd :%s/\v.*debugger.*\n//<CR>:noh<CR>
 
 " Quickly edit/reload the vimrc file
 nmap <silent> <leader>ev :e ~/.vimrc<CR>
@@ -212,6 +218,14 @@ function! OpenURI()
   :ruby open_uri
 endfunction
 
+" SCMDiff options
+let g:SCMDiffCommand='git'
+
 " Open URL from this line (OS X only).
 map <leader>u :call OpenURI()<CR>
 
+" Ctags handy helpers
+" Open in new tag
+map <C-\> :tab split<CR>:exec("tag ".expand("<cword>"))<CR>
+" Open in new vertical split
+map <A-]> :vsp <CR>:exec("tag ".expand("<cword>"))<CR>

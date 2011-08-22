@@ -52,3 +52,12 @@
 [submodule "vim/bundle/rails"]
 	path = vim/bundle/rails
 	url = https://github.com/tpope/vim-rails.git
+[submodule "vim/bundle/vim-reload"]
+	path = vim/bundle/vim-reload
+	url = https://github.com/xolox/vim-reload.git
+[submodule "vim/bundle/satellite"]
+	path = vim/bundle/satellite
+	url = https://github.com/dasch/satellite.git
+[submodule "vim/bundle/peg.vim"]
+	path = vim/bundle/peg.vim
+  url = https://github.com/hornairs/peg.vim.git

@@ -39,12 +39,14 @@ nmap <d-7> 7gt
 nmap <d-8> 8gt
 nmap <d-9> 9gt
 
-colorscheme jellybeans
+" colorscheme jellybeans
+set background=dark
+colorscheme solarized
 
 " indent guides
-let g:indent_guides_auto_colors = 0
-autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  guibg=#1A1A1A ctermbg=3
-autocmd VimEnter,Colorscheme * :hi IndentGuidesEven guibg=#111111 ctermbg=4
+let g:indent_guides_auto_colors = 1
+"autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  guibg=#1A1A1A ctermbg=3
+"autocmd VimEnter,Colorscheme * :hi IndentGuidesEven guibg=#111111 ctermbg=4
 
 nmap <silent> <leader>sv :so ~/.vimrc<CR>:so ~/.gvimrc<CR>
 nmap <silent> <leader>egv :e ~/.gvimrc<CR>
