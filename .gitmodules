@@ -61,3 +61,9 @@
 [submodule "vim/bundle/peg.vim"]
 	path = vim/bundle/peg.vim
   url = https://github.com/hornairs/peg.vim.git
+[submodule "vim/bundle/closetag.vim"]
+	path = vim/bundle/closetag.vim
+	url = git://github.com/docunext/closetag.vim.git
+[submodule "vim/bundle/css_color"]
+	path = vim/bundle/css_color
+	url = https://github.com/vim-scripts/css_color.vim.git

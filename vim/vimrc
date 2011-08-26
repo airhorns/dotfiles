@@ -113,6 +113,9 @@ au BufNewFile,BufRead *.py IndentGuidesEnable
 au BufRead,BufNewFile *.{md,markdown,mdown,mkd,mkdn,percolate} set ft=markdown ai formatoptions=tcroqn2 comments=n:&gt spell
 au BufRead,BufNewFile *.percolate set syntax=percolate
 
+" Closetags
+autocmd FileType html,htmldjango,jinjahtml,eruby,mako let b:closetag_html_style=1
+autocmd FileType html,xhtml,xml,htmldjango,jinjahtml,eruby,mako source ~/dotfiles/vim/bundle/closetag.vim/plugin/closetag.vim
 
 " Higlight trailing whitespace
 highlight ExtraWhitespace ctermbg=red guibg=red
