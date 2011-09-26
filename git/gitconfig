@@ -10,7 +10,7 @@
   status = auto
 [color "branch"]
   current = yellow reverse
-  local = yellow 
+  local = yellow
   remote = green
 [color "diff"]
   meta = yellow bold
@@ -64,4 +64,9 @@
 [difftool]
 	prompt = false
 [diff]
-	tool = Kaleidoscope
+  tool = Kaleidoscope
+[merge]
+tool = threesome
+[mergetool "threesome"]
+cmd = "mvim -f $BASE $LOCAL $REMOTE $MERGED -c 'ThreesomeInit'"
+trustExitCode = true
