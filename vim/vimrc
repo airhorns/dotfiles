@@ -23,7 +23,7 @@ set hidden                        " Handle multiple buffers better.
 
 set wildmenu                      " Enhanced command line completion.
 set wildmode=list:longest         " Complete files like a shell.
-
+set wildignore+=*/.git/*,*/.hg/*,*/.svn/*,*.so,*.swo,*.swp
 " Tame searching/moving by Steve Losh
 nnoremap / /\v
 vnoremap / /\v
@@ -69,9 +69,9 @@ set statusline=[%n]\ %<%.99f\ %h%w%m%r%y\ %{fugitive#statusline()}%{exists('*Cap
 
 " Or use vividchalk
 " colorscheme topfunky-light
-colorscheme jellybeans
-"colors liquidcarbon
+" colors liquidcarbon
 "let g:liquidcarbon_high_contrast = 1
+" colorscheme
 
 " Tab mappings.
 map <leader>tt :tabnew<cr>
@@ -134,14 +134,14 @@ nnoremap <leader>W :%s/\s\+$//<cr>:let @/=''<CR>
 autocmd BufNewFile,BufRead *_spec.rb compiler rspec
 
 " Map away the keyboard keys to break old habits
-" nnoremap <up> <nop>
-" nnoremap <down> <nop>
-" nnoremap <left> <nop>
-" nnoremap <right> <nop>
-" inoremap <up> <nop>
-" inoremap <down> <nop>
-" inoremap <left> <nop>
-" inoremap <right> <nop>
+"nnoremap <up> <nop>
+"nnoremap <down> <nop>
+"nnoremap <left> <nop>
+"nnoremap <right> <nop>
+"inoremap <up> <nop>
+"inoremap <down> <nop>
+"inoremap <left> <nop>
+"inoremap <right> <nop>
 
 " reflow paragraph with Q in normal and visual mode
 nnoremap Q gqap
@@ -195,6 +195,9 @@ nmap <D-]> >>
 vmap <D-[> <gv
 vmap <D-]> >gv
 
+set lines=999
+set columns=999
+
 " Save a file as root.
 cabbrev w!! w !sudo tee % > /dev/null<CR>:e!<CR><CR>
 
@@ -228,7 +231,23 @@ let g:SCMDiffCommand='git'
 map <leader>u :call OpenURI()<CR>
 
 " Ctags handy helpers
-" Open in new tag
+" Open in new tab
 map <C-\> :tab split<CR>:exec("tag ".expand("<cword>"))<CR>
 " Open in new vertical split
 map <A-]> :vsp <CR>:exec("tag ".expand("<cword>"))<CR>
+" Open in new horizontal split
+map <A-[> :sp <CR>:exec("tag ".expand("<cword>"))<CR>
+" CoffeeTags conf
+let g:tagbar_type_coffee = {
+\ 'kinds' : [
+\   'f:functions',
+\   'o:object'
+\ ],
+\ 'kind2scope' : {
+\  'f' : 'object',
+\   'o' : 'object'
+\},
+\ 'sro' : ".",
+\ 'ctagsbin' : 'coffeetags',
+\ 'ctagsargs' : '--include-vars ',
+\}

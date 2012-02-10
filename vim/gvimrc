@@ -6,7 +6,7 @@ set antialias                     " MacVim: smooth fonts.
 set encoding=utf-8                " Use UTF-8 everywhere.
 set guioptions-=T                 " Hide toolbar.
 set background=light              " Background.
-set lines=40 columns=200          " Window dimensions.
+set lines=999 columns=999          " Window dimensions.
 
 "set guioptions-=r                 " Don't show right scrollbar
 " Start without the toolbar
@@ -42,7 +42,7 @@ nmap <d-9> 9gt
 " colorscheme jellybeans
 set background=dark
 colorscheme solarized
-
+"colorscheme mango
 " indent guides
 let g:indent_guides_auto_colors = 1
 "autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  guibg=#1A1A1A ctermbg=3

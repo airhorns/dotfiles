@@ -111,7 +111,8 @@ export BUNDLE_EDITOR="vim"
 export NODE_PATH="/usr/local/lib/node":$NODE_PATH
 
 # Host specific configs
-host_spec="$HOME/dotfiles/bash/$(hostname)_spec"
+host_spec="$HOME/dotfiles/bash/$(hostname)_spec.sh"
+host_spec=${host_spec//\.local/}
 if [ -f "$host_spec" ]; then
-  . "$host_spec"
+  source "$host_spec"
 fi

@@ -70,3 +70,18 @@
 [submodule "vim/bundle/threesome"]
 	path = vim/bundle/threesome
 	url = https://github.com/sjl/threesome.vim.git
+[submodule "vim/bundle/vim-colors-solarized"]
+        path = vim/bundle/vim-colors-solarized
+        url = git://github.com/altercation/vim-colors-solarized.git
+[submodule "vim/bundle/vim-less"]
+	path = vim/bundle/vim-less
+	url = https://github.com/groenewege/vim-less.git
+[submodule "vim/bundle/command-t"]
+	path = vim/bundle/command-t
+	url = git://git.wincent.com/command-t.git
+[submodule "vim/bundle/ctrlp"]
+	path = vim/bundle/ctrlp
+	url = https://github.com/kien/ctrlp.vim.git
+[submodule "vim/bundle/mango"]
+	path = vim/bundle/mango
+	url = https://github.com/goatslacker/mango.vim
