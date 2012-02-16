@@ -24,9 +24,6 @@ elseif exists("b:current_syntax")
   finish
 endif
 
-syntax include @Coffee syntax/coffee.vim
-unlet b:current_syntax
-
 " Don't use standard HiLink, it will not work with included syntax files
 if version < 508
   command! -nargs=+ HtmlHiLink hi link <args>
@@ -40,6 +37,7 @@ syntax sync linebreaks=1
 
 " Additions to HTML groups
 syntax region htmlBold    start=/\\\@<!\(^\|\A\)\@=\*\@<!\*\*\*\@!\S/  end=/\S\\\@<!\*\@<!\*\*\*\@!\($\|\A\)\@=/  contains=htmlItalic,@Spell
+
 
 syntax region htmlItalic  start=/\\\@<!\(^\|\A\)\@=\*\@<!\*\*\@!\S/    end=/\S\\\@<!\*\@<!\*\*\@!\($\|\A\)\@=/    contains=htmlBold,@Spell
 syntax region htmlItalic  start=/\\\@<!\(^\|\A\)\@=\<_\@<!___\@!\S/      end=/\S\\\@<!_\@<!___\@!\($\|\A\)\@=/       contains=htmlBold,@Spell
@@ -78,9 +76,6 @@ syntax region mkdCode       start="<pre[^>]*>"  end="</pre>"
 syntax region mkdCode       start="<code[^>]*>" end="</code>"
 syntax region mkdCode       start=/^`\{3,3}\s*\w*\s*$/  end=/^`\{3,3}\s*$/
 
-syntax region coffeeScriptCode start=/^`\{3,3}\s*coffeescript*\s*$/  end=/^`\{3,3}\s*$/ contains=@Coffee keepend
-syntax region coffeeScriptCode matchgroup=Snip start=/^!!!\{3,3}\s*coffeescript*\s*$/  end=/^!!!\{3,3}\s*$/ contains=@Coffee keepend
-
 " HTML headings
 syntax region htmlH1       start="^\s*#"                   end="\($\|#\+\)" contains=@Spell
 syntax region htmlH2       start="^\s*##"                  end="\($\|#\+\)" contains=@Spell
@@ -98,7 +93,7 @@ HtmlHiLink mkdListCode      String
 HtmlHiLink mkdBlockCode     String
 HtmlHiLink mkdBlockquote    Comment
 HtmlHiLink mkdLineContinue  Comment
-HtmlHiLink mkdListItem      String
+HtmlHiLink mkdListItem      Identifier
 HtmlHiLink mkdRule          Identifier
 HtmlHiLink mkdLineBreak     Todo
 HtmlHiLink mkdLink          htmlLink
@@ -114,4 +109,3 @@ let b:current_syntax = "markdown"
 
 delcommand HtmlHiLink
 " vim: tabstop=2
-
