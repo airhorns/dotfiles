@@ -1,0 +1,5 @@
+--langdef=coffee
+--langmap=coffee:.coffee
+--regex-coffee=/^[ \t]*class[ \t]+([A-Za-z\.]+)[ \t]*.*$/\1/c,class/
+--regex-coffee=/^[ \t]*\@?(::)?([A-Za-z\.]+)[ \t]*(:|=).*->.*$/\2/f,function/
+--regex-coffee=/^[ \t]*\@(classA|a)?ccessor[ \t]*("|')([A-Za-z\.]+)("|').*->.*$/\3/a,accessor/

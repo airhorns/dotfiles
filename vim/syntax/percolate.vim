@@ -9,7 +9,7 @@ syntax include @Markdown syntax/markdown.vim
 let b:current_syntax = ''
 unlet b:current_syntax
 syntax include @Coffee syntax/coffee.vim
-syntax region coffeeScriptCode matchgroup=Snip start="\~\~\~" end="\~\~\~" containedin=@Markdown contains=@Coffee
+syntax region coffeeScriptCode matchgroup=Snip start="\!\!\!" end="\!\!\!" containedin=@Markdown contains=@Coffee
 
 syn region markdownCoffeeCodeBlock start="    \|\t" end="$" containedin=@Markdown contains=@Coffee
 
