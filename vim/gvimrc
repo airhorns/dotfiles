@@ -6,9 +6,8 @@ set antialias                     " MacVim: smooth fonts.
 set encoding=utf-8                " Use UTF-8 everywhere.
 set guioptions-=T                 " Hide toolbar.
 set background=light              " Background.
-set lines=999 columns=999          " Window dimensions.
+set lines=999 columns=999         " Window dimensions.
 
-"set guioptions-=r                 " Don't show right scrollbar
 " Start without the toolbar
 set guioptions-=T
 
@@ -39,20 +38,14 @@ nmap <d-7> 7gt
 nmap <d-8> 8gt
 nmap <d-9> 9gt
 
-" colorscheme jellybeans
 set background=dark
 colorscheme solarized
-"colorscheme mango
+
 " indent guides
 let g:indent_guides_auto_colors = 1
-"autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  guibg=#1A1A1A ctermbg=3
-"autocmd VimEnter,Colorscheme * :hi IndentGuidesEven guibg=#111111 ctermbg=4
 
 nmap <silent> <leader>sv :so ~/.vimrc<CR>:so ~/.gvimrc<CR>
 nmap <silent> <leader>egv :e ~/.gvimrc<CR>
-
-" Project Tree
-" autocmd VimEnter * NERDTree
 
 " Disable netrw's autocmd, since we're ALWAYS using NERDTree
 

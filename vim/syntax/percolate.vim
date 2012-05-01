@@ -14,7 +14,13 @@
 if version < 600
   so <sfile>:p:h/html.vim
 else
+  syntax include @Coffee syntax/coffee.vim
+  unlet b:current_syntax
+  syntax include @JavaScript syntax/javascript.vim
+  unlet b:current_syntax
   runtime! syntax/html.vim
+  unlet b:current_syntax
+  syntax include @Html syntax/html.vim
   unlet b:current_syntax
 endif
 
@@ -24,8 +30,6 @@ elseif exists("b:current_syntax")
   finish
 endif
 
-syntax include @Coffee syntax/coffee.vim
-unlet b:current_syntax
 
 " Don't use standard HiLink, it will not work with included syntax files
 if version < 508
@@ -78,28 +82,29 @@ syntax region mkdCode       start="<pre[^>]*>"  end="</pre>"
 syntax region mkdCode       start="<code[^>]*>" end="</code>"
 syntax region mkdCode       start=/^`\{3,3}\s*\w*\s*$/  end=/^`\{3,3}\s*$/
 
-syntax region coffeeScriptCode start=/^`\{3,3}\s*coffeescript*\s*$/  end=/^`\{3,3}\s*$/ contains=@Coffee keepend
-syntax region coffeeScriptCode matchgroup=Snip start=/^!!!\{3,3}\s*coffeescript*\s*$/  end=/^!!!\{3,3}\s*$/ contains=@Coffee keepend
+syntax region htmlCode         matchgroup=mkdCode start=/^`\{3,3}\s*html*\s*$/          end=/^`\{3,3}\s*$/ contains=@html keepend
+syntax region coffeeScriptCode matchgroup=mkdCode start=/^`\{3,3}\s*coffeescript*\s*$/  end=/^`\{3,3}\s*$/ contains=@Coffee keepend
+
+syntax region percolateCoffeeCode     matchgroup=mkdDelimiter start=/^!\{3,3}\s*\(coffeescript\)\?\s*$/  end=/^!\{3,3}\s*$/ contains=@Coffee keepend
+syntax region percolateJavaScriptCode matchgroup=mkdDelimiter start=/^!\{3,3}\s*javascript*\s*$/         end=/^!\{3,3}\s*$/ contains=@JavaScript keepend
 
 " HTML headings
-syntax region htmlH1       start="^\s*#"                   end="\($\|#\+\)" contains=@Spell
-syntax region htmlH2       start="^\s*##"                  end="\($\|#\+\)" contains=@Spell
-syntax region htmlH3       start="^\s*###"                 end="\($\|#\+\)" contains=@Spell
-syntax region htmlH4       start="^\s*####"                end="\($\|#\+\)" contains=@Spell
-syntax region htmlH5       start="^\s*#####"               end="\($\|#\+\)" contains=@Spell
-syntax region htmlH6       start="^\s*######"              end="\($\|#\+\)" contains=@Spell
-syntax match  htmlH1       /^.\+\n=\+$/ contains=@Spell
-syntax match  htmlH2       /^.\+\n-\+$/ contains=@Spell
+syntax region htmlH1       start="^\s*\(#\|-\|=\)"           end="\($\|\(#\|-\|=\)\+\)" contains=@Spell
+syntax region htmlH2       start="^\s*\(#\|-\|=\)\{2,2}"     end="\($\|\(#\|-\|=\)\+\)" contains=@Spell
+syntax region htmlH3       start="^\s*\(#\|-\|=\)\{3,3}"     end="\($\|\(#\|-\|=\)\+\)" contains=@Spell
+syntax region htmlH4       start="^\s*\(#\|-\|=\)\{4,4}"     end="\($\|\(#\|-\|=\)\+\)" contains=@Spell
+syntax region htmlH5       start="^\s*\(#\|-\|=\)\{5,5}"     end="\($\|\(#\|-\|=\)\+\)" contains=@Spell
+syntax region htmlH6       start="^\s*\(#\|-\|=\)\{6,6}"     end="\($\|\(#\|-\|=\)\+\)" contains=@Spell
 
 "highlighting for Markdown groups
-HtmlHiLink mkdString        String
+HtmlHiLink mkdString        Comment
 HtmlHiLink mkdCode          String
 HtmlHiLink mkdListCode      String
 HtmlHiLink mkdBlockCode     String
 HtmlHiLink mkdBlockquote    Comment
 HtmlHiLink mkdLineContinue  Comment
-HtmlHiLink mkdListItem      String
 HtmlHiLink mkdRule          Identifier
+HtmlHiLink mkdListItem      Identifier
 HtmlHiLink mkdLineBreak     Todo
 HtmlHiLink mkdLink          htmlLink
 HtmlHiLink mkdURL           htmlString
@@ -110,8 +115,7 @@ HtmlHiLink mkdLinkTitle     htmlString
 
 HtmlHiLink mkdDelimiter     Delimiter
 
-let b:current_syntax = "markdown"
+let b:current_syntax = "percolate"
 
 delcommand HtmlHiLink
 " vim: tabstop=2
-

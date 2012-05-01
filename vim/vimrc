@@ -110,8 +110,7 @@ au BufNewFile,BufRead *.coffee IndentGuidesEnable
 au BufNewFile,BufRead *.py IndentGuidesEnable
 
 " Markdown handy stuff
-au BufRead,BufNewFile *.{md,markdown,mdown,mkd,mkdn,percolate} set ft=markdown ai formatoptions=tcroqn2 comments=n:&gt spell
-au BufRead,BufNewFile *.percolate set syntax=percolate
+au BufRead,BufNewFile *.{md,markdown,mdown,mkd,mkdn} set ai formatoptions=tcroqn2 comments=n:&gt spell
 
 " Closetags
 autocmd FileType html,htmldjango,jinjahtml,eruby,mako let b:closetag_html_style=1
@@ -162,11 +161,11 @@ inoremap <Up> <C-o>gk
 inoremap jj <ESC>
 
 " Remove debugger lines
-nmap <silent> <leader>rd :%s/\v.*debugger.*\n//<CR>:noh<CR>
+nnoremap <silent> <leader>rd :%s/\v.*debugger.*\n//<CR>:noh<CR>
 
 " Quickly edit/reload the vimrc file
-nmap <silent> <leader>ev :e ~/.vimrc<CR>
-nmap <silent> <leader>sv :so ~/.vimrc<CR>
+nnoremap <silent> <leader>ev :e ~/.vimrc<CR>
+nnoremap <silent> <leader>sv :so ~/.vimrc<CR>
 
 " NERDTree configuration
 let NERDTreeIgnore=['\.rbc$', '\~$']
@@ -188,15 +187,14 @@ let g:closetag_html_style=1
 " Syntastic conf
 let g:syntastic_enable_signs=1
 
+" Swap words around punctuation
+nnoremap <silent> <Leader>x "_yiw:s/\(\%#\w\+\)\(\_W\+\)\(\w\+\)/\3\2\1/<CR><c-o>/\w\+\_W\+<CR><c-l>
 
 " Indentations while keeping selection
 nmap <D-[> <<
 nmap <D-]> >>
 vmap <D-[> <gv
 vmap <D-]> >gv
-
-set lines=999
-set columns=999
 
 " Save a file as root.
 cabbrev w!! w !sudo tee % > /dev/null<CR>:e!<CR><CR>
@@ -224,11 +222,11 @@ function! OpenURI()
   :ruby open_uri
 endfunction
 
-" SCMDiff options
-let g:SCMDiffCommand='git'
-
 " Open URL from this line (OS X only).
 map <leader>u :call OpenURI()<CR>
+
+" SCMDiff options
+let g:SCMDiffCommand='git'
 
 " Ctags handy helpers
 " Open in new tab

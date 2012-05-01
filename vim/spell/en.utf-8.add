@@ -16,3 +16,8 @@ mixins
 EventEmitter
 accessor
 namespace
+accessor's
+memoizes
+SetIndex
+belongsTo
+hasOne
