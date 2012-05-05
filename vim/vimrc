@@ -103,6 +103,7 @@ au BufNewFile,BufRead Rakefile    set filetype=ruby
 au BufNewFile,BufRead Guardfile   set filetype=ruby
 au BufNewFile,BufRead Gemfile     set filetype=ruby
 au BufNewFile,BufRead *.{peg,leg,language} set filetype=peg syntax=peg
+au BufNewFile,BufRead *.htm.erb   set filetype=html
 
 " Indent guides
 let g:indent_guides_start_level = 2
