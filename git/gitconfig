@@ -4,6 +4,7 @@
 [github]
 	user = hornairs
 	token = 0663246e684c2b70c5e5eb7943f79bd8
+	gist-oauth-token = 3e82303c955941ad32b53bbf3e58f525d7254f40
 [color]
   branch = auto
   diff = auto
