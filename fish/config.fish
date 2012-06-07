@@ -8,6 +8,8 @@ set PAGER "less"
 set host_spec $HOME/dotfiles/bash/(hostname)_spec.sh
 set host_spec (echo $host_spec | sed s/\.local//)
 
+set fish_greeting "Hello."
+
 if test -f "$host_spec"
   . host_spec
 end

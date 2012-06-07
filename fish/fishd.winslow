@@ -20,7 +20,7 @@ SET fish_color_search_match:--background=purple
 SET fish_color_valid_path:--underline
 SET fish_complete_path:/Users/hornairs/.config/fish/completions\x1e/usr/local/etc/fish/completions\x1e/usr/local/share/fish/completions
 SET fish_function_path:/Users/hornairs/.config/fish/functions\x1e/usr/local/etc/fish/functions\x1e/usr/local/share/fish/functions
-SET fish_greeting:Welcome to fish, the friendly interactive shell\x0aType \x1b[32mhelp\x1b[30m\x1b[m for instructions on how to use fish
+SET fish_greeting:Hello.
 SET fish_key_bindings:fish_default_key_bindings
 SET fish_pager_color_completion:normal
 SET fish_pager_color_description:normal
