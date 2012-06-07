@@ -39,6 +39,7 @@
   # amending the previous commit
   ca = commit --amend
   caa = commit -a --amend -C HEAD
+  cah = commit --amend --reuse-message=HEAD
 
   # reset
   ## soft resets

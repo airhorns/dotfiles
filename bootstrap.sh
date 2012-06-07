@@ -1,3 +1,5 @@
+#!/usr/bin/env bash
+
 rm ../.bash_profile ../.bashrc ../.gitignore ../.gitconfig ../.gvimrc ../.vimrc ../.vim ../.toprc ../.screenrc ../.rdebugrc ../.ackrc ../.rdebugrc ../.ctags ../.pryrc
 
 ln -s ~/dotfiles/bash/bash_profile ../.bash_profile
@@ -13,5 +15,8 @@ ln -s ~/dotfiles/ackrc ../.ackrc
 ln -s ~/dotfiles/rdebugrc ../.rdebugrc
 ln -s ~/dotfiles/ctags ../.ctags
 ln -s ~/dotfiles/pryrc ../.pryrc
+
+mkdir -p ~/.config
+ln -s ~/dotfiles/fish ~/.config/fish
 
 git config --global core.excludesfile ~/.gitignore

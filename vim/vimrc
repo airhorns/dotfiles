@@ -84,15 +84,15 @@ map <leader>tf :tabfirst<cr>
 map <leader>tl :tablast<cr>
 map <leader>tm :tabmove
 
-" Uncomment to use Jamis Buck's file opening plugin
-"map <Leader>t :FuzzyFinderTextMate<Enter>
-
 " Controversial...swap colon and semicolon for easier commands
 nnoremap ; :
 " nnoremap : ;
 
-" vnoremap ; :
-vnoremap : ;
+ vnoremap ; :
+" vnoremap : ;
+
+" Map backspace to a browserlike back-a-buffer
+nmap <BS> :bp<cr>
 
 " Extra syntaxes
 au BufRead,BufNewFile *.scss      set filetype=scss
