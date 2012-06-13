@@ -17,4 +17,4 @@ if test -f "$host_spec"
 end
 
 . ~/Code/hook/hook.fish
-fish_hook_enable autojump brew debugging ln rake rbenv rails
+fish_hook_enable autojump brew debugging ln rake rbenv rails git

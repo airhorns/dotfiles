@@ -19,7 +19,7 @@ SET fish_color_redirection:normal
 SET fish_color_search_match:--background=purple
 SET fish_color_valid_path:--underline
 SET fish_complete_path:/Users/hornairs/.config/fish/completions\x1e/etc/fish/completions\x1e/usr/local/share/fish/completions\x1e/Users/hornairs/Code/hook/hook/completes\x1e/Users/hornairs/Code/hook/autojump/completions\x1e/Users/hornairs/Code/hook/brew/completions\x1e/Users/hornairs/Code/hook/ln/completions\x1e/Users/hornairs/Code/hook/rake/completions\x1e/Users/hornairs/Code/hook/rbenv/completions\x1e/Users/hornairs/Code/hook/rails/completions
-SET fish_function_path:/Users/hornairs/.config/fish/functions\x1e/etc/fish/functions\x1e/usr/local/share/fish/functions\x1e/Users/hornairs/Code/hook/hook/functions\x1e/Users/hornairs/Code/hook/autojump/functions\x1e/Users/hornairs/Code/hook/brew/functions\x1e/Users/hornairs/Code/hook/debugging/functions\x1e/Users/hornairs/Code/hook/ln/functions\x1e/Users/hornairs/Code/hook/rake/functions\x1e/Users/hornairs/Code/hook/rbenv/functions\x1e/Users/hornairs/Code/hook/rails/functions
+SET fish_function_path:/Users/hornairs/.config/fish/functions\x1e/etc/fish/functions\x1e/usr/local/share/fish/functions\x1e/Users/hornairs/Code/hook/hook/functions\x1e/Users/hornairs/Code/hook/autojump/functions\x1e/Users/hornairs/Code/hook/brew/functions\x1e/Users/hornairs/Code/hook/debugging/functions\x1e/Users/hornairs/Code/hook/ln/functions\x1e/Users/hornairs/Code/hook/rake/functions\x1e/Users/hornairs/Code/hook/rbenv/functions\x1e/Users/hornairs/Code/hook/rails/functions\x1e/Users/hornairs/Code/hook/git/functions
 SET fish_greeting:
 SET fish_key_bindings:fish_default_key_bindings
 SET fish_pager_color_completion:normal

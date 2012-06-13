@@ -1,5 +1,6 @@
 .DS_Store
 *.sw?
+*.sv?
 *.pyc
 /tags
 script/vendor_batman
