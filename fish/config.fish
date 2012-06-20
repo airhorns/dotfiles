@@ -1,7 +1,8 @@
-set -xg PATH "$HOME/bin" "/usr/local/bin" "/usr/local/sbin" $PATH
-set -xg EDITOR "vim"
-set -xg BUNDLE_EDITOR "vim"
+set -xg PATH "$HOME/bin" "$HOME/Code/go/bin" "/usr/local/bin" "/usr/local/sbin" $PATH
+set -xg EDITOR "mvim"
+set -xg BUNDLE_EDITOR "mvim"
 set -xg NODE_PATH "/usr/local/lib/node" $NODE_PATH
+set -xg GOPATH "$HOME/Code/go/src" $GOPATH
 
 set -xg PAGER "less"
 

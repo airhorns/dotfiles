@@ -97,3 +97,6 @@
 [submodule "vim/bundle/vim-fish"]
 	path = vim/bundle/vim-fish
 	url = https://github.com/nuclearsandwich/fish.vim.git
+[submodule "vim/bundle/go"]
+	path = vim/bundle/go
+	url = https://github.com/jnwhiteh/vim-golang.git
