@@ -1,7 +1,6 @@
 .DS_Store
-*.sw?
-*.sv?
+*.s??
 *.pyc
 /tags
-script/vendor_batman
+vendor_batman
 .rbenv-version

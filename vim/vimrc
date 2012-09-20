@@ -8,6 +8,7 @@ silent! call pathogen#runtime_append_all_bundles()
 " Directories for swp files
 set backupdir=~/.vim/backup
 set directory=~/.vim/backup
+set shell=/bin/bash
 
 syntax enable                     " Turn on syntax highlighting.
 filetype plugin indent on         " Turn on file type detection.

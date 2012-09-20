@@ -3,6 +3,7 @@
 	email = harry.brundage@gmail.com
 [github]
 	user = hornairs
+	password = !security 2>&1 >/dev/null find-generic-password -gs github.password | ruby -e 'print $1 if STDIN.gets =~ /^password: \\\\\"(.*)\\\\\"$/'
 [color]
   branch = auto
   diff = auto
@@ -24,6 +25,7 @@
 	excludesfile = /Users/hornairs/.gitignore
 [alias]
 	remove-missing = "!git ls-files -d -z | xargs -0 git update-index --remove"
+  produce = "!CURRENT=$(git symbolic-ref HEAD) && git up && git checkout production && git merge master && git checkout $CURRENT"
   # I like using the interactive mode to make complex commits
   ai = add --interactive
 
