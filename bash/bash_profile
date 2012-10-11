@@ -1,6 +1,5 @@
 source "$HOME/dotfiles/bash/bashrc"
 source "$HOME/dotfiles/bash/autojump"
-[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
 export NARWHAL_ENGINE=jsc
 
 export PATH="/Users/hornairs/Code/android-sdk/tools":$PATH

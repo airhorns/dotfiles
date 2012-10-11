@@ -22,10 +22,10 @@
   changed = green
   untracked = cyan
 [core]
-	excludesfile = /Users/hornairs/.gitignore
+	excludesfile = /Users/shopify/.gitignore
 [alias]
 	remove-missing = "!git ls-files -d -z | xargs -0 git update-index --remove"
-  produce = "!CURRENT=$(git symbolic-ref HEAD) && git up && git checkout production && git merge master && git checkout $CURRENT"
+  produce = "!git up && git checkout production && git merge master"
   # I like using the interactive mode to make complex commits
   ai = add --interactive
 
