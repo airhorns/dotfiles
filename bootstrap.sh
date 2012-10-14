@@ -17,6 +17,6 @@ ln -s ~/dotfiles/ctags ../.ctags
 ln -s ~/dotfiles/pryrc ../.pryrc
 
 mkdir -p ~/.config
-ln -s ~/dotfiles/fish ~/.config/fish
+ln -s ~/dotfiles/fish ~/.config
 
 git config --global core.excludesfile ~/.gitignore
