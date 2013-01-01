@@ -100,3 +100,9 @@
 [submodule "vim/bundle/go"]
 	path = vim/bundle/go
 	url = https://github.com/jnwhiteh/vim-golang.git
+[submodule "vim/bundle/minitest"]
+	path = vim/bundle/minitest
+	url = https://github.com/sunaku/vim-ruby-minitest.git
+[submodule "vim/bundle/clojure"]
+	path = vim/bundle/clojure
+	url = https://github.com/vim-scripts/VimClojure.git
