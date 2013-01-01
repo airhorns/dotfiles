@@ -12,5 +12,5 @@ function fish_prompt -d "Write out the prompt"
 	if test -d ".git"
 		printf ' %s%s%s' (set_color normal) (set_color green) (__git_ps1)
 	end
-	printf '%s ⇒  %s' (set_color -o purple) (set_color normal)
+	printf '%s ➜  %s' (set_color -o purple) (set_color normal)
 end
