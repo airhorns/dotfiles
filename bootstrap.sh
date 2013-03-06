@@ -17,7 +17,10 @@ ln -vs ~/dotfiles/ctags ~/.ctags
 ln -vs ~/dotfiles/pryrc ~/.pryrc
 ln -vs ~/dotfiles/gemrc ~/.gemrc
 
-mkdir -p ~/.config
+mkdir -p ~/.config/
 ln -fvs ~/dotfiles/fish ~/.config
+
+mkdir -p ~/.lein/
+ln -vs ~/dotfiles/leinrc ~/.lein/leinrc
 
 git config --global core.excludesfile ~/.gitignore

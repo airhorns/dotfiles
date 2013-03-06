@@ -8,11 +8,15 @@ if test -f "/usr/local/sbin"
   set -xg PATH $PATH "/usr/local/sbin"
 end
 
+if test -f "/usr/local/heroku/bin"
+  set -xg PATH $PATH "/usr/local/heroku/bin"
+end
+
 set -xg EDITOR "vim"
 set -xg BUNDLE_EDITOR "mvim"
 set -xg NODE_PATH "/usr/local/lib/node" $NODE_PATH
 set -xg GOPATH "$HOME/Code/go" $GOPATH
-
+set -xg IM_ALREADY_PRO_THANKS "conceited bastard"
 set -xg PAGER "less"
 
 alias vi vim

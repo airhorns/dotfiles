@@ -3,3 +3,6 @@ source "$HOME/dotfiles/bash/autojump"
 export NARWHAL_ENGINE=jsc
 
 export PATH="/Users/hornairs/Code/android-sdk/tools":$PATH
+
+### Added by the Heroku Toolbelt
+export PATH="/usr/local/heroku/bin:$PATH"

@@ -63,13 +63,13 @@
   p = push
 	tree = log -n 50 --pretty=\"%C(yellow)%h %Creset %s %C(red)(%cr)%Creset\" --graph
 [difftool "Kaleidoscope"]
-	cmd = ksdiff-wrapper git \"$LOCAL\" \"$REMOTE\"
+	cmd = ksdiff --partial-changeset --relative-path \"$MERGED\" -- \"$LOCAL\" \"$REMOTE\"
 [difftool]
 	prompt = false
 [diff]
-  tool = Kaleidoscope
+	tool = Kaleidoscope
 [merge]
-tool = threesome
+	tool = Kaleidoscope
 [mergetool "threesome"]
 cmd = "mvim -f $BASE $LOCAL $REMOTE $MERGED -c 'ThreesomeInit'"
 trustExitCode = true
@@ -82,3 +82,8 @@ trustExitCode = true
 	default = current
 [credential]
 	helper = osxkeychain
+[mergetool "Kaleidoscope"]
+	cmd = ksdiff --merge --output \"$MERGED\" --base \"$BASE\" -- \"$LOCAL\" --snapshot \"$REMOTE\" --snapshot
+	trustExitCode = true
+[mergetool]
+	prompt = false
