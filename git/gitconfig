@@ -26,6 +26,7 @@
 [alias]
 	remove-missing = "!git ls-files -d -z | xargs -0 git update-index --remove"
   produce = "!git up && git checkout production && git merge master"
+  down = "!git fetch origin && git branch -f production origin/production && git branch -f performance origin/performance"
   # I like using the interactive mode to make complex commits
   ai = add --interactive
 
@@ -69,7 +70,7 @@
 [diff]
 	tool = Kaleidoscope
 [merge]
-	tool = Kaleidoscope
+	tool = threesome
 [mergetool "threesome"]
 cmd = "mvim -f $BASE $LOCAL $REMOTE $MERGED -c 'ThreesomeInit'"
 trustExitCode = true
