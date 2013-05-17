@@ -21,8 +21,6 @@
   added = yellow
   changed = green
   untracked = cyan
-[core]
-	excludesfile = /Users/shopify/.gitignore
 [alias]
 	remove-missing = "!git ls-files -d -z | xargs -0 git update-index --remove"
   produce = "!git up && git checkout production && git merge master"
@@ -71,6 +69,7 @@
 	tool = Kaleidoscope
 [merge]
 	tool = threesome
+	conflictstyle = diff3
 [mergetool "threesome"]
 cmd = "mvim -f $BASE $LOCAL $REMOTE $MERGED -c 'ThreesomeInit'"
 trustExitCode = true
@@ -82,9 +81,14 @@ trustExitCode = true
 [push]
 	default = current
 [credential]
-	helper = osxkeychain
+	helper = /opt/boxen/bin/boxen-git-credential
 [mergetool "Kaleidoscope"]
 	cmd = ksdiff --merge --output \"$MERGED\" --base \"$BASE\" -- \"$LOCAL\" --snapshot \"$REMOTE\" --snapshot
 	trustExitCode = true
 [mergetool]
 	prompt = false
+[core]
+	excludesfile = /Users/hornairs/.gitignore
+
+[hub]
+protocol = https
