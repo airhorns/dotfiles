@@ -9,8 +9,6 @@ function fish_prompt -d "Write out the prompt"
 	end
 
 	# Print git branch
-	if test -d ".git"
-		printf ' %s%s%s' (set_color normal) (set_color green) (__git_ps1)
-	end
+  printf ' %s%s%s' (set_color normal) (set_color green) (__git_ps1)
 	printf '%s ➜  %s' (set_color -o purple) (set_color normal)
 end

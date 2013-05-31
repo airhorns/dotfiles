@@ -1,14 +1,14 @@
 set -xg PATH "$HOME/bin" "/usr/local/bin" $PATH
 
-if test -f "$HOME/Code/go/bin"
+if test -d "$HOME/Code/go/bin"
   set -xg PATH "$HOME/Code/go/bin" $PATH
 end
 
-if test -f "/usr/local/sbin"
+if test -d "/usr/local/sbin"
   set -xg PATH $PATH "/usr/local/sbin"
 end
 
-if test -f "/usr/local/heroku/bin"
+if test -d "/usr/local/heroku/bin"
   set -xg PATH $PATH "/usr/local/heroku/bin"
 end
 
