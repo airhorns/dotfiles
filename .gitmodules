@@ -112,3 +112,9 @@
 [submodule "vim/bundle/vim-golang"]
 	path = vim/bundle/vim-golang
 	url = https://github.com/jnwhiteh/vim-golang.git
+[submodule "vim/bundle/vim-multiple-cursors"]
+	path = vim/bundle/vim-multiple-cursors
+	url = https://github.com/terryma/vim-multiple-cursors.git
+[submodule "fish/modules/virtualfish"]
+	path = fish/modules/virtualfish
+	url = https://github.com/adambrenecki/virtualfish.git

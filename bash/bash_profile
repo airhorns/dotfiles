@@ -6,3 +6,8 @@ export PATH="/Users/hornairs/Code/android-sdk/tools":$PATH
 
 ### Added by the Heroku Toolbelt
 export PATH="/usr/local/heroku/bin:$PATH"
+export CLICOLOR=1
+export LSCOLORS=GxFxCxDxBxegedabagaced
+
+export ARCHFLAGS="-arch x86_64"
+export CC=/usr/local/bin/gcc-4.2

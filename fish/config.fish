@@ -18,7 +18,7 @@ set -xg NODE_PATH "/usr/local/lib/node" $NODE_PATH
 set -xg GOPATH "$HOME/Code/go" $GOPATH
 set -xg IM_ALREADY_PRO_THANKS "conceited bastard"
 set -xg PAGER "less"
-
+set -xg LINEMAN_AUTO_START false
 alias vi vim
 
 set --local host_spec $HOME/dotfiles/fish/(hostname)_spec.fish

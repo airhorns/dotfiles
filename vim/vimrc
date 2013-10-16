@@ -6,8 +6,8 @@ set nocompatible                  " Must come first because it changes other opt
 silent! call pathogen#runtime_append_all_bundles()
 
 " Directories for swp files
-set backupdir=~/.vim/backup
-set directory=~/.vim/backup
+set backupdir=/Users/hornairs/.vim_backup
+set directory=/Users/hornairs/.vim_backup
 set shell=/bin/bash
 
 syntax enable                     " Turn on syntax highlighting.
