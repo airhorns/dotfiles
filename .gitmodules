@@ -118,3 +118,6 @@
 [submodule "fish/modules/virtualfish"]
 	path = fish/modules/virtualfish
 	url = https://github.com/adambrenecki/virtualfish.git
+[submodule "vim/bundle/pig"]
+	path = vim/bundle/pig
+	url = https://github.com/motus/pig.vim.git
