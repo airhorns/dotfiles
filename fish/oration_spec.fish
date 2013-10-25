@@ -10,6 +10,16 @@ set -xg PATH $PATH "/Users/hornairs/bin/depot_tools" "/opt/boxen/homebrew/share/
 
 set -xg WORKON_HOME "/Users/hornairs/.virtualenvs"
 
+# tun-sc
+alias tun-sc "sshuttle -vr importer1 172.16.0.0/16 172.17.0.0/16"
+set -xg PIG_OPTS "-Dpig.additional.jars=/opt/boxen/homebrew/Cellar/pig/0.11.1/lipstick-1.0.jar"
+set -xg HADOOP_NAMENODE_OPTS "-Dcom.sun.management.jmxremote" $HADOOP_NAMENODE_OPTS
+set -xg HADOOP_SECONDARYNAMENODE_OPTS "-Dcom.sun.management.jmxremote" $HADOOP_SECONDARYNAMENODE_OPTS
+set -xg HADOOP_DATANODE_OPTS "-Dcom.sun.management.jmxremote" $HADOOP_DATANODE_OPTS
+set -xg HADOOP_BALANCER_OPTS "-Dcom.sun.management.jmxremote" $HADOOP_BALANCER_OPTS
+set -xg HADOOP_JOBTRACKER_OPTS "-Dcom.sun.management.jmxremote" $HADOOP_JOBTRACKER_OPTS
+set -xg HADOOP_IDENT_STRING $USER
+set -xg HADOOP_OPTS $HADOOP_OPTS "-Djava.security.krb5.realm=OX.AC.UK" "-Djava.security.krb5.kdc=kdc0.ox.ac.uk:kdc1.ox.ac.uk"
 
 # Make the root of Boxen available.
 

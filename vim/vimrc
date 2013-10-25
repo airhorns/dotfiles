@@ -251,3 +251,5 @@ let g:tagbar_type_coffee = {
 \ 'ctagsbin' : 'coffeetags',
 \ 'ctagsargs' : '',
 \}
+
+map <C-h> <C-W-h>
