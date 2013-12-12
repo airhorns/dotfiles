@@ -23,8 +23,6 @@
   untracked = cyan
 [alias]
 	remove-missing = "!git ls-files -d -z | xargs -0 git update-index --remove"
-  produce = "!git up && git checkout production && git merge master"
-  down = "!git fetch origin && git branch -f production origin/production && git branch -f performance origin/performance"
   # I like using the interactive mode to make complex commits
   ai = add --interactive
 
@@ -39,6 +37,7 @@
   ca = commit --amend
   caa = commit -a --amend -C HEAD
   cah = commit --amend --reuse-message=HEAD
+  cip = commit -a -m "WIP"
 
   # reset
   ## soft resets
@@ -55,6 +54,7 @@
   d = diff
   a = add
   co = checkout
+  cob = checkout -b
   b = branch
   l = log
   f = fetch
@@ -81,9 +81,8 @@ trustExitCode = true
 	cmd = "diffmerge --merge --result=\"$MERGED\" \"$LOCAL\" \"$(if test -f \"$BASE\"; then echo \"$BASE\"; else echo \"$LOCAL\"; fi)\" \"$REMOTE\""
 	trustExitCode = true
 [push]
-	default = current
+	default = simple
 [credential]
-	helper = /opt/boxen/bin/boxen-git-credential
 [mergetool "Kaleidoscope"]
 	cmd = ksdiff --merge --output \"$MERGED\" --base \"$BASE\" -- \"$LOCAL\" --snapshot \"$REMOTE\" --snapshot
 	trustExitCode = true

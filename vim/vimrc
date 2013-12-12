@@ -10,6 +10,9 @@ set backupdir=/Users/hornairs/.vim_backup
 set directory=/Users/hornairs/.vim_backup
 set shell=/bin/bash
 
+filetype off
+filetype plugin indent off
+set runtimepath+=$GOROOT/misc/vim
 syntax enable                     " Turn on syntax highlighting.
 filetype plugin indent on         " Turn on file type detection.
 
@@ -99,12 +102,13 @@ nmap <BS> :bp<cr>
 au BufRead,BufNewFile *.scss      set filetype=scss
 au BufNewFile,BufRead *.mustache  set filetype=mustache
 au BufNewFile,BufRead *.bars      set filetype=mustache
-au BufNewFile,BufRead *.ru        set filetype=ruby
+au BufNewFile,BufRead *.{ru,cap}  set filetype=ruby
 au BufNewFile,BufRead Rakefile    set filetype=ruby
 au BufNewFile,BufRead Guardfile   set filetype=ruby
 au BufNewFile,BufRead Gemfile     set filetype=ruby
 au BufNewFile,BufRead *.{peg,leg,language} set filetype=peg syntax=peg
 au BufNewFile,BufRead *.htm.erb   set filetype=html
+au BufNewFile,BufRead *.fish      set filetype=fish
 
 " Indent guides
 let g:indent_guides_start_level = 2
@@ -163,7 +167,7 @@ inoremap <Up> <C-o>gk
 inoremap jj <ESC>
 
 " Remove debugger lines
-nnoremap <silent> <leader>rd :%s/\v.*debugger.*\n//<CR>:noh<CR>
+nnoremap <silent> <leader>rd :%s/\v.*(debugger\|byebug\|binding\.pry\).*\n//<CR>:noh<CR>
 
 " Quickly edit/reload the vimrc file
 nnoremap <silent> <leader>ev :e ~/.vimrc<CR>
@@ -253,3 +257,4 @@ let g:tagbar_type_coffee = {
 \}
 
 map <C-h> <C-W-h>
+
