@@ -140,7 +140,7 @@ function source --description 'Source bash/zsh/ksh files'
       case '*'
         break
     end
-    set -e argv[1]
+    set -e $argv[1]
   end
 
   set -l file $argv[1]
