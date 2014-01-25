@@ -121,3 +121,12 @@
 [submodule "vim/bundle/pig"]
 	path = vim/bundle/pig
 	url = https://github.com/motus/pig.vim.git
+[submodule "vim/bundle/scala"]
+	path = vim/bundle/scala
+	url = https://github.com/derekwyatt/vim-scala.git
+[submodule "vim/bundle/python"]
+	path = vim/bundle/python
+	url = git://github.com/klen/python-mode.git
+[submodule "vim/bundle/jedi"]
+	path = vim/bundle/jedi
+	url = https://github.com/davidhalter/jedi-vim.git
