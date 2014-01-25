@@ -93,3 +93,5 @@ trustExitCode = true
 
 [hub]
 protocol = https
+[credential]
+	helper = osxkeychain

@@ -21,8 +21,7 @@ set -xg PAGER "less"
 set -xg LINEMAN_AUTO_START false
 alias vi vim
 
-set --local host_spec $HOME/dotfiles/fish/(hostname)_spec.fish
-set --local host_spec (echo $host_spec | sed s/\.local//)
+set --local host_spec $HOME/dotfiles/fish/(hostname -s)_spec.fish
 
 set fish_greeting ""
 
