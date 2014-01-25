@@ -89,7 +89,7 @@ trustExitCode = true
 [mergetool]
 	prompt = false
 [core]
-	excludesfile = /Users/hornairs/.gitignore
+	excludesfile = /home/vagrant/.gitignore
 
 [hub]
 protocol = https
