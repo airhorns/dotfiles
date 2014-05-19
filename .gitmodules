@@ -130,3 +130,6 @@
 [submodule "vim/bundle/jedi"]
 	path = vim/bundle/jedi
 	url = https://github.com/davidhalter/jedi-vim.git
+[submodule "vim/bundle/greplace"]
+	path = vim/bundle/greplace
+	url = https://github.com/vim-scripts/greplace.vim.git

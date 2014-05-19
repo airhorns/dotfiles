@@ -22,7 +22,10 @@
   changed = green
   untracked = cyan
 [alias]
-	remove-missing = "!git ls-files -d -z | xargs -0 git update-index --remove"
+  remove-missing = "!git ls-files -d -z | xargs -0 git update-index --remove"
+  po = "!git push --set-upstream origin \"$(git rev-parse --abbrev-ref HEAD)\""
+  remove-merged = "!git branch --merged | grep -v \"\\*\" | xargs -n 1 git branch -d"
+
   # I like using the interactive mode to make complex commits
   ai = add --interactive
 
@@ -37,7 +40,11 @@
   ca = commit --amend
   caa = commit -a --amend -C HEAD
   cah = commit --amend --reuse-message=HEAD
+  caah = commit --all --amend --reuse-message=HEAD
   cip = commit -a -m "WIP"
+
+  # Mother of all aliases
+  cap = "!git commit --all --amend --reuse-message=HEAD && git push origin --force"
 
   # reset
   ## soft resets
@@ -53,6 +60,7 @@
   s = status
   d = diff
   a = add
+  aa = add -A
   co = checkout
   cob = checkout -b
   b = branch
@@ -62,6 +70,11 @@
   p = push
 	tree = log -n 50 --pretty=\"%C(yellow)%h %Creset %s %C(red)(%cr)%Creset\" --graph
   pof = push origin --force
+
+  # rebase
+  rim = rebase -i master
+  rcon = rebase --continue
+  rab = rebase --abort
 
 [difftool "Kaleidoscope"]
 	cmd = ksdiff --partial-changeset --relative-path \"$MERGED\" -- \"$LOCAL\" \"$REMOTE\"
@@ -81,7 +94,6 @@ trustExitCode = true
 	cmd = "diffmerge --merge --result=\"$MERGED\" \"$LOCAL\" \"$(if test -f \"$BASE\"; then echo \"$BASE\"; else echo \"$LOCAL\"; fi)\" \"$REMOTE\""
 	trustExitCode = true
 [push]
-	default = simple
 [credential]
 [mergetool "Kaleidoscope"]
 	cmd = ksdiff --merge --output \"$MERGED\" --base \"$BASE\" -- \"$LOCAL\" --snapshot \"$REMOTE\" --snapshot
@@ -89,9 +101,11 @@ trustExitCode = true
 [mergetool]
 	prompt = false
 [core]
-	excludesfile = /home/vagrant/.gitignore
+	excludesfile = /Users/hornairs/.gitignore
 
 [hub]
 protocol = https
 [credential]
 	helper = osxkeychain
+[push]
+	default = simple
