@@ -1,6 +1,10 @@
 function fish_prompt -d "Write out the prompt"
   # Hostname
-  printf '%s%s' (set_color magenta) (hostname -s)
+  if not set -q HOST_COLOR
+    set HOST_COLOR magenta
+  end
+
+  printf '%s%s' (set_color $HOST_COLOR) (hostname -s)
 
 	# Color writeable dirs green, read-only dirs red
 	if test -w "."
