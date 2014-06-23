@@ -1,4 +1,11 @@
 function fish_prompt -d "Write out the prompt"
+  # Print arrow with exit status coloring
+  if test $status = 0
+    set ARROW_COLOR brown
+  else
+    set ARROW_COLOR red
+  end
+
   # Hostname
   if not set -q HOST_COLOR
     set HOST_COLOR magenta
@@ -25,5 +32,6 @@ function fish_prompt -d "Write out the prompt"
 
 	# Print git branch
   printf '%s%s' (set_color green) (__git_ps1)
-	printf '%s ➜  %s' (set_color -o brown) (set_color normal)
+
+	printf '%s ➜  %s' (set_color -o $ARROW_COLOR) (set_color normal)
 end
