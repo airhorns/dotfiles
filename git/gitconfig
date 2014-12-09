@@ -83,7 +83,7 @@
 [diff]
 	tool = Kaleidoscope
 [merge]
-	tool = threesome
+	tool = Kaleidoscope
 	conflictstyle = diff3
 [mergetool "threesome"]
 cmd = "mvim -f $BASE $LOCAL $REMOTE $MERGED -c 'ThreesomeInit'"
@@ -93,8 +93,6 @@ trustExitCode = true
 [mergetool "diffmerge"]
 	cmd = "diffmerge --merge --result=\"$MERGED\" \"$LOCAL\" \"$(if test -f \"$BASE\"; then echo \"$BASE\"; else echo \"$LOCAL\"; fi)\" \"$REMOTE\""
 	trustExitCode = true
-[push]
-[credential]
 [mergetool "Kaleidoscope"]
 	cmd = ksdiff --merge --output \"$MERGED\" --base \"$BASE\" -- \"$LOCAL\" --snapshot \"$REMOTE\" --snapshot
 	trustExitCode = true
