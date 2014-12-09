@@ -11,6 +11,9 @@ set -xg PATH $PATH "/Users/hornairs/bin/depot_tools"
 set -xg WORKON_HOME "/Users/hornairs/.virtualenvs"
 . ~/dotfiles/fish/modules/virtualfish/virtual.fish
 . ~/dotfiles/fish/modules/virtualfish/global_requirements.fish
+. ~/dotfiles/fish/modules/virtualfish/auto_activation.fish
 
 . ~/Code/hook/hook.fish
 fish_hook_enable autojump brew debugging ln rake rails git rbenv
+
+set -x NO_AUTOAUTOLINT 1
