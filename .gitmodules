@@ -133,3 +133,6 @@
 [submodule "vim/bundle/greplace"]
 	path = vim/bundle/greplace
 	url = https://github.com/vim-scripts/greplace.vim.git
+[submodule "vim/bundle/smartpairs"]
+	path = vim/bundle/smartpairs
+	url = https://github.com/gorkunov/smartpairs.vim.git
