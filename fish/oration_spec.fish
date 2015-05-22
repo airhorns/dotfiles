@@ -9,9 +9,7 @@ set -xg PATH $PATH "/Users/hornairs/bin/depot_tools"
 # Virtualenv
 
 set -xg WORKON_HOME "/Users/hornairs/.virtualenvs"
-. ~/dotfiles/fish/modules/virtualfish/virtual.fish
-. ~/dotfiles/fish/modules/virtualfish/global_requirements.fish
-. ~/dotfiles/fish/modules/virtualfish/auto_activation.fish
+eval (python -m virtualfish auto_activation)
 
 . ~/Code/hook/hook.fish
 fish_hook_enable autojump brew debugging ln rake rails git rbenv

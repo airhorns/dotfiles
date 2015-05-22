@@ -25,3 +25,5 @@ ln -vs ~/dotfiles/leinrc ~/.lein/leinrc
 
 git config --global core.excludesfile ~/.gitignore
 mkdir -p ~/.vim_backup
+
+pip install virtualfish
