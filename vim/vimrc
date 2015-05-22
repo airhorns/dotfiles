@@ -110,6 +110,7 @@ au BufNewFile,BufRead Capfile     set filetype=ruby
 au BufNewFile,BufRead *.{peg,leg,language} set filetype=peg syntax=peg
 au BufNewFile,BufRead *.htm.erb   set filetype=html
 au BufNewFile,BufRead *.fish      set filetype=fish
+au BufNewFile,BufRead *.ejson      set filetype=javascript
 
 " Indent guides
 let g:indent_guides_start_level = 2
@@ -264,3 +265,4 @@ let g:tagbar_type_coffee = {
 
 map <C-h> <C-W-h>
 
+set rtp+=~/.fzf
