@@ -5,3 +5,5 @@
 vendor_batman
 .rbenv-version
 .bundle
+.idea
+*.iml

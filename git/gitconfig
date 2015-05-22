@@ -107,3 +107,7 @@ protocol = https
 	helper = osxkeychain
 [push]
 	default = simple
+[filter "hawser"]
+	clean = git hawser clean %f
+	smudge = git hawser smudge %f
+	required = true
