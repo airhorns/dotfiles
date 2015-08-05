@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+set -ex
 
 rm -f ~/.bash_profile ~/.bashrc ~/.gitignore ~/.gitconfig ~/.gvimrc ~/.vimrc ~/.vim ~/.toprc ~/.screenrc ~/.rdebugrc ~/.ackrc ~/.rdebugrc ~/.ctags ~/.pryrc ~/.gemrc
 
