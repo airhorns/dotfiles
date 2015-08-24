@@ -28,3 +28,7 @@ set fish_greeting ""
 if test -f "$host_spec"
   . $host_spec
 end
+
+if test -f "~/.profile"
+  bass source ~/.profile
+end
