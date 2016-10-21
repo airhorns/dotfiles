@@ -61,7 +61,7 @@ if [ -f /etc/bash_completion ]; then
     . /etc/bash_completion
 fi
 
-if [ which brew && -f $(brew --prefix)/etc/bash_completion ]; then
+if [ -f $(brew --prefix)/etc/bash_completion ]; then
     . $(brew --prefix)/etc/bash_completion
 fi
 
@@ -86,21 +86,6 @@ if [ -n "$force_color_prompt" ]; then
     fi
 fi
 
-GIT_PS1_SHOWDIRTYSTATE=true
-if [ "$color_prompt" = yes ]; then
-		if [ -f "/usr/local/etc/bash_completion.d/git-completion.bash" ]; then
-			source "/usr/local/etc/bash_completion.d/git-completion.bash"
-      PS1="${debian_chroot:+($debian_chroot)}\[$GREEN\]\u@\h\[$NC\]:\[$BLUE\]\w\[$red\] "'$(__git_ps1 "(%s)")'"\[$NC\]\$ "
-    elif [ -f "/etc/bash_completion.d/git" ]; then
-      source "/etc/bash_completion.d/git"
-      PS1="${debian_chroot:+($debian_chroot)}\[$GREEN\]\u@\h\[$NC\]:\[$BLUE\]\w\[$red\] "'$(__git_ps1 "(%s)")'"\[$NC\]\$ "
-		else
-			PS1='${debian_chroot:+($debian_chroot)}$($GREEN)\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ '
-		fi
-else
-    PS1='${debian_chroot:+($debian_chroot)}\u@\h:\w\$ '
-fi
-
 unset color_prompt force_color_prompt
 
 # Aliases
@@ -118,4 +103,9 @@ host_spec="$HOME/dotfiles/bash/$(hostname)_spec.sh"
 host_spec=${host_spec//\.local/}
 if [ -f "$host_spec" ]; then
   source "$host_spec"
+fi
+
+# load dev, but only if present and the shell is interactive
+if [[ -f /opt/dev/dev.sh ]] && [[ $- == *i* ]]; then
+  source /opt/dev/dev.sh
 fi

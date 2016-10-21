@@ -45,6 +45,7 @@
 
   # Mother of all aliases
   cap = "!git commit --all --amend --reuse-message=HEAD && git push origin --force"
+  cahpof = "!git commit --all --amend --reuse-message=HEAD && git push origin --force"
 
   # reset
   ## soft resets
@@ -73,8 +74,13 @@
 
   # rebase
   rim = rebase -i master
+  rem = rebase master
   rcon = rebase --continue
   rab = rebase --abort
+
+  rmpof = "!git rebase master && git push origin --force"
+  rimpof = "!git rebase --interactive  master && git push origin --force"
+	up = pull --rebase --autostash
 
 [difftool "Kaleidoscope"]
 	cmd = ksdiff --partial-changeset --relative-path \"$MERGED\" -- \"$LOCAL\" \"$REMOTE\"
@@ -99,7 +105,7 @@ trustExitCode = true
 [mergetool]
 	prompt = false
 [core]
-	excludesfile = /home/vagrant/.gitignore
+	excludesfile = /Users/hornairs/.gitignore
 
 [hub]
 protocol = https
@@ -111,3 +117,5 @@ protocol = https
 	clean = git hawser clean %f
 	smudge = git hawser smudge %f
 	required = true
+[rerere]
+	enabled = true

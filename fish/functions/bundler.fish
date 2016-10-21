@@ -1,0 +1,1 @@
+/Users/hornairs/.config/fisherman/bundler/bundler.fish

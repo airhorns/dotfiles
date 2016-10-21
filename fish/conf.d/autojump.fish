@@ -1,0 +1,1 @@
+/Users/hornairs/.config/fisherman/autojump/conf.d/autojump.fish

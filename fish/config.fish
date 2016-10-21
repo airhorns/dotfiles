@@ -16,17 +16,17 @@ set -xg EDITOR "vim"
 set -xg BUNDLE_EDITOR "mvim"
 set -xg NODE_PATH "/usr/local/lib/node" $NODE_PATH
 set -xg GOPATH "$HOME/Code/go" $GOPATH
-set -xg IM_ALREADY_PRO_THANKS "conceited bastard"
+set -xg IM_ALREADY_PRO_THANKS 1
+set -xg IM_ALRDY_PR0_AT_WALRUSES_THX 1
 set -xg PAGER "less"
 set -xg LINEMAN_AUTO_START false
 alias vi vim
-
 set --local host_spec $HOME/dotfiles/fish/(hostname -s)_spec.fish
 
 set fish_greeting ""
 
 if test -f "$host_spec"
-  . $host_spec
+  source $host_spec
 end
 
 if test -f "~/.profile"

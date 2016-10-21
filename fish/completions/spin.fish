@@ -1,0 +1,1 @@
+/Users/hornairs/.config/fisherman/spin/completions/spin.fish

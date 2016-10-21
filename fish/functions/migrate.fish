@@ -1,0 +1,1 @@
+/Users/hornairs/.config/fisherman/rails/migrate.fish
