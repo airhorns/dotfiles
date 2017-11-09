@@ -119,3 +119,5 @@ protocol = https
 	required = true
 [rerere]
 	enabled = true
+[fetch]
+	prune = true

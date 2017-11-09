@@ -577,9 +577,11 @@ function __fisher_plugin_url_clone_async -a url name branch
 
     fish -c "
             set -lx GIT_ASKPASS /bin/echo
+
             if test -d '$fisher_cache/$name'
                 command rm -rf '$fisher_cache/$name'
             end
+
             if command git clone $branch -q --depth 1 '$url' '$fisher_cache/$name' ^ /dev/null
                   printf '$okay""OK""$nc Fetch $okay%s$nc %s\n' '$name' '$hm_url' > $__fisher_stderr
                   command cp -Rf '$fisher_cache/$name' '$fisher_config'
@@ -686,28 +688,37 @@ function __fisher_update_path_async -a name path
     set -l okay (set_color $fish_color_match)
 
     fish -c "
+
         pushd $path
+
         set -l branch (basename (command git symbolic-ref HEAD ^ /dev/null))
         set -l hm_branch
+
         if test -z \"\$branch\"
             set branch master
         end
+
         if test \"\$branch\" != master
             set hm_branch \" (\$branch)\"
         end
+
         if not command git fetch -q origin \$branch ^ /dev/null
             printf '$error""!""$nc Fetch $error%s$nc\n' '$name' > $__fisher_stderr
             exit
         end
+
         set -l commits (command git rev-list --left-right --count \$branch..FETCH_HEAD ^ /dev/null | cut -d\t -f2)
+
         command git reset -q --hard FETCH_HEAD ^ /dev/null
         command git clean -qdfx
         command cp -Rf '$path/.' '$fisher_cache/$name'
+
         if test -z \"\$commits\" -o \"\$commits\" -eq 0
             printf '$okay""OK""$nc Latest $okay%s$nc%s\n' '$name' \$hm_branch > $__fisher_stderr
         else
             printf '$okay""OK""$nc Pulled $okay%s$nc new commit/s $okay%s$nc%s\n' \$commits '$name' \$hm_branch > $__fisher_stderr
         end
+
     " > /dev/stderr &
 
     __fisher_jobs_get -l
@@ -930,17 +941,23 @@ end
 function __fisher_get_plugin_name_from_gist -a url
     set -l gist_id (printf "%s\n" "$url" | command sed 's|.*/||')
     set -l name (fish -c "
+
         $fisher_cmd_name -v > /dev/null
         curl -Ss https://api.github.com/gists/$gist_id &
+
         __fisher_jobs_await (__fisher_jobs_get -l)
+
     " | command awk '
+
         /"files": / {
             files++
         }
+
         /"[^ ]+.fish": / && files {
             gsub("^ *\"|\.fish.*", "")
             print
         }
+
     ')
 
     if test -z "$name"
@@ -953,24 +970,30 @@ end
 
 function __fisher_remote_parse_header
     command awk '
+
         function get_page_count(s, rstart, rlength,    pages) {
             if (split(substr(s, rstart, rlength), pages, "=")) {
                 return pages[2]
             }
         }
+
         BEGIN {
             FS = " <|>; |, <"
         }
+
         /^Link: / {
             if (match($2, "&page=[0-9]*")) {
                 url = substr($2, 1, RSTART - 1)
                 page_next = get_page_count($2, RSTART, RLENGTH)
+
                 if (page_next) {
                     page_last = get_page_count($4, RSTART, RLENGTH)
+
                     printf("%s\n%s\n%s", url, page_next, page_last)
                 }
             }
         }
+
     '
 end
 
@@ -1027,17 +1050,23 @@ function __fisher_remote_index_update
             end
 
             curl -u$GITHUB_USER:$GITHUB_TOKEN --max-time 10 -s "$next_url" | command awk -v ORS='' '
+
                 {
                     gsub(/[{}[]]/, "")
+
                 } //
+
             ' | command awk '
+
                 {
                     n = split($0, a, /,[\t ]*"/)
+
                     for (i = 1; i <= n; i++) {
                         gsub(/"/, "", a[i])
                         print(a[i])
                     }
                 }
+
             ' > "$index-$i-$page" &
         end
     end
@@ -1055,79 +1084,104 @@ function __fisher_remote_index_update
     end
 
     command awk '
+
         function quicksort(list, lo, hi, pivot,   j, i, t) {
             pivot = j = i = t
+
             if (lo >= hi) {
                 return
             }
+
             pivot = lo
             i = lo
             j = hi
+
             while (i < j) {
                 while (list[i] <= list[pivot] && i < hi) {
                     i++
                 }
+
                 while (list[j] > list[pivot]) {
                     j--
                 }
+
                 if (i < j) {
                     t = list[i]
                     list[i] = list[j]
                     list[j] = t
                 }
             }
+
             t = list[pivot]
+
             list[pivot] = list[j]
             list[j] = t
+
             quicksort(list, lo, j - 1)
             quicksort(list, j + 1, hi)
         }
+
         function reset_vars() {
             name = info = stars = url = ""
         }
+
         {
             if ($0 ~ /^name: /) {
                 name = substr($0, 7)
             }
+
             if ($0 ~ /^description: /) {
                 info = substr($0, 14)
             }
+
             if ($0 ~ /^stargazers_count: /) {
                 stars = substr($0, 19)
             }
+
             if (name != "" && stars != "") {
                 if (name ~ /oh-my-fish/) {
                     reset_vars()
                     next
                 }
+
                 url = "github.com/fisherman/" name
+
                 if (name ~ /^(plugin|theme)-/) {
                     gsub(/^plugin-/, "", name)
+
                     if (seen_names[name]) {
                         reset_vars()
                         next
                     }
+
                     url = "github.com/oh-my-fish/" name
                     name = "omf/" name
+
                 } else {
                     seen_names[name]++
                 }
+
                 if (info == "" || info == "null") {
                     info = url
                 }
+
                 if (info ~ /\.$/) {
                     info = substr(info, 1, length(info) - 1)
                 }
+
                 records[++record_count] = name "\t" info "\t" url "\t" stars
                 reset_vars()
             }
         }
+
         END {
             quicksort(records, 1, record_count)
+
             for (i = 1; i <= record_count; i++) {
                 print(records[i])
             }
         }
+
     ' < "$index" > "$index-tab"
 
     if test ! -s "$index-tab"
@@ -1145,6 +1199,7 @@ function __fisher_list_remote -a format
     if not __fisher_remote_index_update
         __fisher_log error "I could not update the remote index."
         __fisher_log info "
+
             This is most likely a problem with http://api.github.com/
             or a connection timeout. If the problem persists, open an
             issue in: <github.com/fisherman/fisherman/issues>
@@ -1157,20 +1212,25 @@ function __fisher_list_remote -a format
     set -l keys $argv
 
     command awk -v FS=\t -v format_s="$format" -v keys="$keys" '
+
         function basename(s,   n, a) {
             n = split(s, a, "/")
             return a[n]
         }
+
         function record_printf(fmt, name, info, url, stars) {
             gsub(/%name/, name, fmt)
             gsub(/%stars/, stars, fmt)
             gsub(/%url/, url, fmt)
             gsub(/%info/, info, fmt)
+
             printf("%s", fmt)
         }
+
         BEGIN {
             keys_n = split(keys, keys_a, " ")
         }
+
         {
             if (keys_n > 0) {
                 for (i = 1; i <= keys_n; i++) {
@@ -1183,6 +1243,7 @@ function __fisher_list_remote -a format
                 record_printf(format_s, $1, $2, $3, $4)
             }
         }
+
     ' < "$index"
 end
 
@@ -1305,28 +1366,35 @@ function __fisher_log -a log message fd
         function okay(s) {
             printf("'"$okay"'%s'"$nc"' %s\n", "OK", s)
         }
+
         function info(s) {
             printf("%s\n", s)
         }
+
         function error(s) {
             printf("'"$error"'%s'"$nc"' %s\n", "!", s)
         }
+
         {
             sub(/^[ ]+/, "")
             gsub("``", "  ")
+
             if (/&[^&]+&/) {
                 n = match($0, /&[^&]+&/)
                 if (n) {
                     sub(/&[^&]+&/, "'"$$log"'" substr($0, RSTART + 1, RLENGTH - 2) "'"$nc"'", $0)
                 }
             }
+
             s[++len] = $0
         }
+
         END {
             for (i = 1; i <= len; i++) {
                 if ((i == 1 || i == len) && (s[i] == "")) {
                     continue
                 }
+
                 if (s[i] == "") {
                     print
                 } else {
@@ -1334,6 +1402,7 @@ function __fisher_log -a log message fd
                 }
             }
         }
+
     ' > "$fd"
 end
 
@@ -1343,10 +1412,12 @@ function __fisher_jobs_get
         /[0-9]+\t/{
             jobs[++job_count] = $1
         }
+
         END {
             for (i = 1; i <= job_count; i++) {
                 print(jobs[i])
             }
+
             exit job_count == 0
         }
     '
@@ -1402,16 +1473,20 @@ function __fisher_key_bindings_remove -a plugin_name
 
     if command awk '
         /^$/ { next }
+
         /^function fish_user_key_bindings/ {
             i++
             next
         }
+
         /^end$/ && 1 == i {
             exit 0
         }
+
         // {
             exit 1
         }
+
     ' < "$user_key_bindings"
 
         command rm -f "$user_key_bindings"
@@ -1427,40 +1502,50 @@ function __fisher_key_bindings_append -a plugin_name file
 
     set -l key_bindings_source (
         fish_indent < "$user_key_bindings" | command awk '
+
             /^function fish_user_key_bindings/ {
                 reading_function_source = 1
                 next
             }
+
             /^end$/ && reading_function_source {
                 exit
             }
+
             reading_function_source {
                 print($0)
                 next
             }
+
         '
     )
 
     set -l plugin_key_bindings_source (
         fish_indent < "$file" | command awk -v name="$plugin_name" '
+
             BEGIN {
                 printf("### %s ###\n", name)
             }
+
             END {
                 printf("### %s ###\n", name)
             }
+
             /^function (fish_(user_)?)?key_bindings$/ {
                 is_end = 1
                 next
             }
+
             /^end$/ && is_end {
                 end = 0
                 next
             }
+
             !/^ *(#.*)*$/ {
                 gsub("#.*", "")
                 printf("%s\n", $0)
             }
+
         '
     )
 
@@ -1468,6 +1553,7 @@ function __fisher_key_bindings_append -a plugin_name file
 
     fish_indent < "$user_key_bindings" | command awk '
         {
+
             if ($0 ~ /^function fish_user_key_bindings/) {
                 reading_function_source = 1
                 next
@@ -1475,22 +1561,28 @@ function __fisher_key_bindings_append -a plugin_name file
                 reading_function_source = 0
                 next
             }
+
             if (!reading_function_source) {
                 print($0)
             }
         }
+
     ' > "$user_key_bindings-copy"
 
     command mv -f "$user_key_bindings-copy" "$user_key_bindings"
 
     printf "%s\n" $key_bindings_source $plugin_key_bindings_source | command awk '
+
         BEGIN {
             print "function fish_user_key_bindings"
         }
+
         //
+
         END {
             print "end"
         }
+
     ' | fish_indent >> "$user_key_bindings"
 end
 
@@ -1508,12 +1600,15 @@ end
 
 function __fisher_plugin_get_names
     printf "%s\n" $argv | command awk '
+
         {
             sub(/\/$/, "")
             n = split($0, s, "/")
             sub(/^(omf|omf-theme|omf-plugin|plugin|theme|fish|fisher|fish-plugin|fish-theme)-/, "", s[n])
+
             printf("%s\n%s\n", s[n], s[n - 1])
         }
+
     '
 end
 
@@ -1528,14 +1623,18 @@ function __fisher_plugin_get_url_info -a option
     command cat {$argv}/.git/config ^ /dev/null | command awk -v option="$option" '
         /url/ {
             n = split($3, s, "/")
+
             if ($3 ~ /https:\/\/gist/) {
                 printf("# %s\n", $3)
                 next
             }
+
             if (option == "--dirname") {
                 printf("%s\n", s[n - 1])
+
             } else if (option == "--basename") {
                 printf("%s\n", s[n])
+
             } else {
                 printf("%s/%s\n", s[n - 1], s[n])
             }
@@ -1546,19 +1645,23 @@ end
 
 function __fisher_plugin_normalize_path
     printf "%s\n" $argv | command awk -v pwd="$PWD" '
+
         /^\.$/ {
             print(pwd)
             next
         }
+
         /^\// {
             sub(/\/$/, "")
             print($0)
             next
         }
+
         {
             print(pwd "/" $0)
             next
         }
+
     '
 end
 
@@ -1617,6 +1720,7 @@ function __fisher_restore_fish_colors
                 set_option "-U"
             }
         }
+
         NR == 1 {
             print("set " set_option " fish_color_normal " $0)
         }
@@ -1689,6 +1793,7 @@ function __fisher_restore_fish_colors
         NR == 24 {
             print("set " set_option " fish_color_host " $0)
         }
+
     '
 end
 
@@ -1726,18 +1831,23 @@ function __fisher_read_bundle_file
         /^$/ || /^[ \t]*#/ || /^(--|-).*/ {
             next
         }
+
         /^omf\// {
             sub(/^omf\//, "oh-my-fish/")
+
             if ($0 !~ /(theme|plugin)-/) {
                 sub(/^oh-my-fish\//, "oh-my-fish/plugin-")
             }
         }
+
         /^[ \t]*package / {
             sub("^[ \t]*package ", "oh-my-fish/plugin-")
         }
+
         {
             sub(/\.git$/, "")
             sub("^[@* \t]*", "")
+
             if (!dedupe[$0]++) {
                 printf("%s\n", $0)
             }
@@ -1760,15 +1870,19 @@ end
 
 function __fisher_plugin_get_ref_count -a name
     printf "%s\n" $fisher_dependency_count | command awk -v plugin="$name" '
+
         BEGIN {
             i = 0
         }
+
         $0 == plugin {
             i++
         }
+
         END {
             print(i)
         }
+
     '
 end
 
@@ -1810,9 +1924,11 @@ function __fisher_complete
     set -l IFS \t
 
     command awk -v FS=\t -v OFS=\t '
+
         {
             print($1, $2)
         }
+
     ' "$fisher_cache/.index" ^ /dev/null | while read -l name info
 
         switch "$name"
@@ -1846,16 +1962,20 @@ function __fisher_humanize_duration
     command awk '
         function hmTime(time,   stamp) {
             split("h:m:s:ms", units, ":")
+
             for (i = 2; i >= -1; i--) {
                 if (t = int( i < 0 ? time % 1000 : time / (60 ^ i * 1000) % 60 )) {
                     stamp = stamp t units[sqrt((i - 2) ^ 2) + 1] " "
                 }
             }
+
             if (stamp ~ /^ *$/) {
                 return "0ms"
             }
+
             return substr(stamp, 1, length(stamp) - 1)
         }
+
         {
             print hmTime($0)
         }
@@ -2000,10 +2120,12 @@ function __fisher_self_uninstall -a yn
             __fisher_log info "
                 This will permanently remove fisherman from your system.
                 The following directories and files will be erased:
+
                 $fisher_cache
                 $fisher_config
                 $fish_config/functions/$fisher_cmd_name.fish
                 $fish_config/completions/$fisher_cmd_name.fish
+
             " /dev/stderr
 
             echo -sn "Continue? [Y/n] " > /dev/stderr
@@ -2085,6 +2207,7 @@ Install a plugin\.
 .IP "" 4
 .
 .nf
+
 '"$fisher_cmd_name"' mono
 .
 .fi
@@ -2097,6 +2220,7 @@ Install some plugins\.
 .IP "" 4
 .
 .nf
+
 '"$fisher_cmd_name"' z fzf edc/bass omf/tab
 .
 .fi
@@ -2109,6 +2233,7 @@ Install a gist\.
 .IP "" 4
 .
 .nf
+
 '"$fisher_cmd_name"' https://gist\.github\.com/username/1f40e1c6e0551b2666b2
 .
 .fi
@@ -2121,6 +2246,7 @@ Install a local directory\.
 .IP "" 4
 .
 .nf
+
 '"$fisher_cmd_name"' ~/my/plugin
 .
 .fi
@@ -2133,6 +2259,7 @@ Edit your \fIfishfile\fR and run \fB'"$fisher_cmd_name"'\fR to commit changes\.
 .IP "" 4
 .
 .nf
+
 $EDITOR ~/\.config/fish/fishfile
 '"$fisher_cmd_name"'
 .
@@ -2146,6 +2273,7 @@ Show everything you\'ve installed\.
 .IP "" 4
 .
 .nf
+
 '"$fisher_cmd_name"' ls
 @ plugin     # a local directory
 * mono       # the current prompt
@@ -2164,6 +2292,7 @@ Show everything that\'s available\.
 .IP "" 4
 .
 .nf
+
 '"$fisher_cmd_name"' ls\-remote
 .
 .fi
@@ -2176,6 +2305,7 @@ Update everything\.
 .IP "" 4
 .
 .nf
+
 '"$fisher_cmd_name"' up
 .
 .fi
@@ -2188,6 +2318,7 @@ Update some plugins\.
 .IP "" 4
 .
 .nf
+
 '"$fisher_cmd_name"' up bass z fzf
 .
 .fi
@@ -2200,6 +2331,7 @@ Remove plugins\.
 .IP "" 4
 .
 .nf
+
 '"$fisher_cmd_name"' rm thefuck
 .
 .fi
@@ -2212,6 +2344,7 @@ Remove all the plugins\.
 .IP "" 4
 .
 .nf
+
 '"$fisher_cmd_name"' ls | '"$fisher_cmd_name"' rm
 .
 .fi
@@ -2224,6 +2357,7 @@ Get help\.
 .IP "" 4
 .
 .nf
+
 '"$fisher_cmd_name"' help z
 .
 .fi
@@ -2241,6 +2375,7 @@ For \fIsnippet\fR support, upgrade to >=2\.3\.0 or append the following code to 
 .IP "" 4
 .
 .nf
+
 for file in ~/\.config/fish/conf\.d/*\.fish
     source $file
 end

@@ -1,1 +1,0 @@
-/Users/hornairs/.config/fisherman/pbcopy/functions/pbcopy.fish
