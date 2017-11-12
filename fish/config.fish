@@ -13,17 +13,16 @@ if test -d "/usr/local/heroku/bin"
 end
 
 set -xg EDITOR "vim"
-set -xg BUNDLE_EDITOR "mvim"
+set -xg BUNDLE_EDITOR "vim"
 set -xg NODE_PATH "/usr/local/lib/node" $NODE_PATH
 set -xg GOPATH "$HOME/Code/go" $GOPATH
 set -xg IM_ALREADY_PRO_THANKS 1
 set -xg IM_ALRDY_PR0_AT_WALRUSES_THX 1
 set -xg PAGER "less"
-set -xg LINEMAN_AUTO_START false
 alias vi vim
-set --local host_spec $HOME/dotfiles/fish/(hostname -s)_spec.fish
 set fish_greeting ""
 
+set --local host_spec $HOME/dotfiles/fish/(hostname -s)_spec.fish
 if test -f "$host_spec"
   source $host_spec
 end
