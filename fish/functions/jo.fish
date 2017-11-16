@@ -1,1 +1,1 @@
-/Users/hornairs/.config/fisherman/autojump/functions/jo.fish
+/Users/airhorns/.config/fisherman/autojump/functions/jo.fish

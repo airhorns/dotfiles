@@ -1,1 +1,1 @@
-/Users/hornairs/.config/fisherman/rails/migrate.fish
+/Users/airhorns/.config/fisherman/rails/migrate.fish

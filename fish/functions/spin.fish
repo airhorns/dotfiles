@@ -1,1 +1,1 @@
-/Users/hornairs/.config/fisherman/spin/spin.fish
+/Users/airhorns/.config/fisherman/spin/spin.fish

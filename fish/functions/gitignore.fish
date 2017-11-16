@@ -1,1 +1,1 @@
-/Users/hornairs/.config/fisherman/gitignore/gitignore.fish
+/Users/airhorns/.config/fisherman/gitignore/gitignore.fish

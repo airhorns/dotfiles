@@ -1,1 +1,1 @@
-/Users/hornairs/.config/fisherman/bundler/__is_a_bundled_executable.fish
+/Users/airhorns/.config/fisherman/bundler/__is_a_bundled_executable.fish

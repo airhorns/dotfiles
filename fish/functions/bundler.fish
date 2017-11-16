@@ -1,1 +1,1 @@
-/Users/hornairs/.config/fisherman/bundler/bundler.fish
+/Users/airhorns/.config/fisherman/bundler/bundler.fish
