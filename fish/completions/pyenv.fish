@@ -1,0 +1,1 @@
+/Users/airhorns/.config/fisherman/pyenv/completions/pyenv.fish

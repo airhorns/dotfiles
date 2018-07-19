@@ -1,9 +1,8 @@
 .DS_Store
-*.s??
+*.swp
 *.pyc
 /tags
 .tags*
-vendor_batman
 .rbenv-version
 .bundle
 .idea

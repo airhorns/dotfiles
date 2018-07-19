@@ -2,6 +2,7 @@ fisherman/autojump
 oh-my-fish/plugin-bundler
 fisherman/getopts
 fisherman/gitignore
+fisherman/pyenv
 oh-my-fish/plugin-rails
 fisherman/rbenv
 fisherman/spin

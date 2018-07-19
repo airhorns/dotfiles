@@ -30,6 +30,3 @@ end
 if test -f "~/.profile"
   bass source ~/.profile
 end
-
-# The next line updates PATH for the Google Cloud SDK.
-if [ -f '/Users/airhorns/google-cloud-sdk/path.fish.inc' ]; if type source > /dev/null; source '/Users/airhorns/google-cloud-sdk/path.fish.inc'; else; . '/Users/airhorns/google-cloud-sdk/path.fish.inc'; end; end
