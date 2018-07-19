@@ -1,1 +1,1 @@
-/Users/airhorns/.config/fisherman/autojump/conf.d/autojump.fish
+/home/airhorns/.config/fisherman/autojump/conf.d/autojump.fish

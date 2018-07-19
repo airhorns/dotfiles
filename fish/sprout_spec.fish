@@ -1,0 +1,1 @@
+set -xg EJSON_KEYDIR "/home/airhorns/.ejson/keys"

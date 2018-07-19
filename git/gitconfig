@@ -105,7 +105,7 @@ trustExitCode = true
 [mergetool]
 	prompt = false
 [core]
-	excludesfile = /Users/airhorns/.gitignore
+	excludesfile = /home/airhorns/.gitignore
 
 [hub]
 protocol = https

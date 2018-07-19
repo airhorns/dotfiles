@@ -1,1 +1,1 @@
-/Users/airhorns/.config/fisherman/rbenv/functions/rbenv.fish
+/home/airhorns/.config/fisherman/rbenv/functions/rbenv.fish

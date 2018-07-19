@@ -1,1 +1,1 @@
-/Users/airhorns/.config/fisherman/autojump/completions/jo.fish
+/home/airhorns/.config/fisherman/autojump/completions/jo.fish

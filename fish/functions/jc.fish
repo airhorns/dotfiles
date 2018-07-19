@@ -1,1 +1,1 @@
-/Users/airhorns/.config/fisherman/autojump/functions/jc.fish
+/home/airhorns/.config/fisherman/autojump/functions/jc.fish

@@ -1,1 +1,1 @@
-/Users/airhorns/.config/fisherman/getopts/getopts.fish
+/home/airhorns/.config/fisherman/getopts/getopts.fish

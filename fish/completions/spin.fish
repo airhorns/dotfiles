@@ -1,1 +1,1 @@
-/Users/airhorns/.config/fisherman/spin/completions/spin.fish
+/home/airhorns/.config/fisherman/spin/completions/spin.fish

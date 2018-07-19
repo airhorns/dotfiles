@@ -1,1 +1,1 @@
-/Users/airhorns/.config/fisherman/autojump/functions/__aj_err.fish
+/home/airhorns/.config/fisherman/autojump/functions/__aj_err.fish
