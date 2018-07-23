@@ -12,3 +12,4 @@ atom/local-history
 atom/packages
 atom/recovery
 atom/storage
+.DS_Store
