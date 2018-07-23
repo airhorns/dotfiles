@@ -4,3 +4,11 @@ vim/.netrwhist
 fish/fish_history
 fish/fishd.*
 fish/hook
+atom/.apm
+atom/.node-gyp
+atom/blob-store
+atom/compile-cache
+atom/local-history
+atom/packages
+atom/recovery
+atom/storage

@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+set -ex
+apm install --packages-file package-list.txt

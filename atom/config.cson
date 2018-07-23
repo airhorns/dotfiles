@@ -1,0 +1,127 @@
+"*":
+  "atom-beautify":
+    general:
+      _analyticsUserId: "d58550fb-a3a0-4b61-86c2-3b7bac0d5b69"
+    js:
+      indent_size: 2
+    json:
+      indent_size: 2
+    ruby:
+      rubocop_path: "bundle exec rubocop"
+  "autocomplete-plus": {}
+  "autocomplete-python":
+    useKite: false
+  "autocomplete-ruby":
+    rsensePath: "/opt/dev/bin/shim rsense"
+  core:
+    disabledPackages: [
+      "language-chef"
+      "tabs-to-spaces"
+      "symbols-view"
+      "autocomplete-ruby"
+      "nuclide-flow"
+      "nuclide-type-hint"
+      "linter-pep8"
+      "go-debug"
+      "tool-bar"
+    ]
+    ignoredNames: [
+      ".git"
+      ".hg"
+      ".svn"
+      ".DS_Store"
+      "._*"
+      "Thumbs.db"
+      "desktop.ini"
+      ".pioenvs"
+      ".piolibdeps"
+      ".clang_complete"
+      ".gcc-flags.json"
+    ]
+    projectHome: "/Users/hornairs/Code"
+    telemetryConsent: "limited"
+    titleBar: "custom"
+  editor:
+    fontSize: 16
+    invisibles: {}
+    preferredLineLength: 120
+    showIndentGuide: true
+    softWrap: true
+  "exception-reporting":
+    userId: "1ed2db56-2c55-8a86-c814-c862bccb5e70"
+  "file-icons":
+    coloured: false
+  "glsl-preview": {}
+  "language-babel":
+    suppressTranspileOnSaveMessages: true
+  "language-elm":
+    elmOraclePath: "/usr/local/bin/elm-oracle"
+  linter: {}
+  "linter-flake8":
+    configFileNames: [
+      "setup.cfg"
+    ]
+    ignoreErrorCodes: [
+      "E501"
+      "E241"
+    ]
+  "linter-glsl": {}
+  "linter-pep8":
+    ignoreErrorCodes: [
+      "E5"
+    ]
+  "linter-rubocop":
+    command: "bundle exec rubocop"
+    disableWhenNoConfigFile: true
+  "linter-ui-default":
+    useBusySignal: false
+  metrics:
+    userId: "d0c86476f62b86aa97d0ff58d4b7a31befcf0254"
+  minimap:
+    plugins:
+      selection: true
+  "nord-atom-ui":
+    darkerFormFocusEffect: true
+  "release-notes":
+    viewedVersion: "0.94.0"
+  "tabs-to-spaces":
+    onSave: "untabify"
+  "tool-bar":
+    position: "Left"
+  "tree-view":
+    hideIgnoredNames: true
+  "vim-mode":
+    useClipboardAsDefaultRegister: false
+  "vim-mode-plus":
+    charactersToAddSpaceOnSurround: [
+      "{"
+    ]
+    useClipboardAsDefaultRegister: false
+  welcome:
+    showOnStartup: false
+  whitespace:
+    ignoreWhitespaceOnCurrentLine: false
+".babel.regexp.source":
+  editor:
+    preferredLineLength: 300
+".elm.source":
+  editor:
+    preferredLineLength: 300
+".erb.html.text":
+  editor:
+    preferredLineLength: 120
+".fish.source":
+  editor:
+    preferredLineLength: 300
+".glsl.source":
+  editor:
+    preferredLineLength: 300
+".js.jsx.source":
+  editor:
+    preferredLineLength: 300
+".ruby.source":
+  editor:
+    preferredLineLength: 120
+".rust.source":
+  editor:
+    preferredLineLength: 99
