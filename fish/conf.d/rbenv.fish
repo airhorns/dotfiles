@@ -1,1 +1,0 @@
-/home/airhorns/.config/fisherman/rbenv/conf.d/rbenv.fish

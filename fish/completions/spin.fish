@@ -1,1 +1,0 @@
-/home/airhorns/.config/fisherman/spin/completions/spin.fish

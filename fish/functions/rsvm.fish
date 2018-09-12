@@ -1,1 +1,0 @@
-/Users/airhorns/.rsvm/rsvm.fish

@@ -1,1 +1,0 @@
-/home/airhorns/.config/fisherman/bundler/bundler.fish
