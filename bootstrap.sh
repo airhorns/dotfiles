@@ -24,10 +24,11 @@ ln -fvs ~/dotfiles/fish ~/.config
 mkdir -p ~/.lein/
 ln -fvs ~/dotfiles/leinrc ~/.lein/leinrc
 
-mkdir -p ~/.atom/
-ln -fvs ~/dotfiles/atom ~/.config
+ln -fvs ~/dotfiles/atom ~/.atom
 
 git config --global core.excludesfile ~/.gitignore
 mkdir -p ~/.vim_backup
 
+mkdir -p ~/bin
 pip install virtualfish
+

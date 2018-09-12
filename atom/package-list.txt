@@ -67,8 +67,6 @@ merge-conflicts@1.4.5
 minimap-selection@4.5.0
 nord-atom-syntax@0.9.1
 nord-atom-ui@0.11.0
-nuclide-flow@0.0.32
-nuclide-type-hint@0.0.32
 pigments@0.40.2
 platformio-ide@2.2.2
 platformio-ide-debugger@1.2.6
