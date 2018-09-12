@@ -55,12 +55,16 @@
 	</data>
 	<key>NSTableView Supports v2 KeyBingingTable</key>
 	<true/>
+	<key>NSWindow Frame SUStatusFrame</key>
+	<string>640 674 400 129 0 0 1680 1027 </string>
 	<key>NSWindow Frame SUUpdateAlert</key>
 	<string>1194 957 620 392 0 0 3008 1669 </string>
+	<key>NSWindow Frame SessionsPreferences</key>
+	<string>269 126 606 469 0 0 3008 1669 </string>
 	<key>NSWindow Frame SharedPreferences</key>
-	<string>268 221 796 473 0 0 1680 1027 </string>
+	<string>252 270 796 473 0 0 1680 1027 </string>
 	<key>NSWindow Frame iTerm Window 0</key>
-	<string>0 641 3008 1028 0 0 3008 1669 </string>
+	<string>0 23 1680 1004 0 0 1680 1027 </string>
 	<key>NeverWarnAboutShortLivedSessions_02517FA3-0FC8-4169-AAE3-F672E6C3FC6E</key>
 	<true/>
 	<key>NeverWarnAboutShortLivedSessions_02517FA3-0FC8-4169-AAE3-F672E6C3FC6E_selection</key>
@@ -77,7 +81,7 @@
 			<key>AWDS Tab Directory</key>
 			<string></string>
 			<key>AWDS Tab Option</key>
-			<string>No</string>
+			<string>Recycle</string>
 			<key>AWDS Window Directory</key>
 			<string></string>
 			<key>AWDS Window Option</key>
@@ -818,7 +822,7 @@
 	<key>SUHasLaunchedBefore</key>
 	<true/>
 	<key>SULastCheckTime</key>
-	<date>2018-05-28T23:36:47Z</date>
+	<date>2018-08-10T17:26:20Z</date>
 	<key>SUSendProfileInfo</key>
 	<false/>
 	<key>ShowFullScreenTabBar</key>
@@ -828,6 +832,6 @@
 	<key>findMode_iTerm</key>
 	<integer>0</integer>
 	<key>iTerm Version</key>
-	<string>3.1.6</string>
+	<string>3.1.7</string>
 </dict>
 </plist>

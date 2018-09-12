@@ -74,6 +74,7 @@
     command: "bundle exec rubocop"
     disableWhenNoConfigFile: true
   "linter-ui-default":
+    showPanel: true
     useBusySignal: false
   metrics:
     userId: "d0c86476f62b86aa97d0ff58d4b7a31befcf0254"
