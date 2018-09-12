@@ -1,10 +1,14 @@
 fisherman/autojump
 martinkacmar/fish-avn
+fisherman/await
 edc/bass
 oh-my-fish/plugin-bundler
+fisherman/fnm
+fisherman/get_file_age
 fisherman/getopts
 fisherman/gitignore
-fisherman/nvm
+fisherman/last_job_id
+fisherman/menu
 fisherman/pipenv
 fisherman/pyenv
 oh-my-fish/plugin-rails

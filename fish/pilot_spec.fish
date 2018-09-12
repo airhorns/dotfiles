@@ -2,7 +2,7 @@
 
 # Virtualenv
 set -xg WORKON_HOME "/Users/airhorns/.virtualenvs"
-# eval (python -m virtualfish auto_activation)
+eval (python -m virtualfish auto_activation)
 
 set --local openssl_prefix "/usr/local/opt/openssl"
 set -xg EJSON_KEYDIR "/Users/airhorns/.ejson/keys"
