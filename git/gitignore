@@ -7,3 +7,7 @@
 .bundle
 .idea
 *.iml
+.byebug_history
+.vscode
+server/core/management/commands/scratch.py
+docker/es-data

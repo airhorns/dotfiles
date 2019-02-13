@@ -1,6 +1,7 @@
 [user]
 	name = Harry Brundage
 	email = harry.brundage@gmail.com
+	signingkey = 2660E985022D88D2
 [github]
 	user = hornairs
 	password = !security 2>&1 >/dev/null find-generic-password -gs github.password | ruby -e 'print $1 if STDIN.gets =~ /^password: \\\\\"(.*)\\\\\"$/'
@@ -121,3 +122,7 @@ protocol = https
 	enabled = true
 [fetch]
 	prune = true
+[gpg]
+	program = /usr/local/bin/gpg
+[commit]
+	gpgsign = true

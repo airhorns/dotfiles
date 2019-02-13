@@ -35,4 +35,8 @@ if test -f "~/.profile"
 end
 
 # The next line updates PATH for the Google Cloud SDK.
-if [ -f ~/google-cloud-sdk/path.fish.inc ]; if type source > /dev/null; source ~/google-cloud-sdk/path.fish.inc; else; . ~/google-cloud-sdk/path.fish.inc; end; end
+if [ -f '/Users/airhorns/Downloads/google-cloud-sdk/path.fish.inc' ]; if type source > /dev/null; source '/Users/airhorns/Downloads/google-cloud-sdk/path.fish.inc'; else; . '/Users/airhorns/Downloads/google-cloud-sdk/path.fish.inc'; end; end
+
+if [ -f /usr/local/share/autojump/autojump.fish ]
+  source /usr/local/share/autojump/autojump.fish
+end
