@@ -74,13 +74,13 @@
   pof = push origin --force
 
   # rebase
-  rim = rebase -i master
-  rem = rebase master
+  rim = rebase -i main
+  rem = rebase main
   rcon = rebase --continue
   rab = rebase --abort
 
-  rmpof = "!git rebase master && git push origin --force"
-  rimpof = "!git rebase --interactive  master && git push origin --force"
+  rmpof = "!git rebase main && git push origin --force"
+  rimpof = "!git rebase --interactive main && git push origin --force"
 	up = pull --rebase --autostash
 
 [difftool "Kaleidoscope"]
