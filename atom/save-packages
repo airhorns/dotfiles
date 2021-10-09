@@ -1,3 +1,0 @@
-#!/usr/bin/env bash
-set -ex
-apm list --installed --bare > package-list.txt

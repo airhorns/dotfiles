@@ -10,7 +10,7 @@ set -xg CLOUDSDK_PYTHON /usr/bin/python
 
 set -xg GOPATH /Users/airhorns/Code/go
 
-set -xg PATH /usr/local/opt/go/libexec/bin $HOME/.krew/bin $PATH
+set -xg PATH /usr/local/opt/go/libexec/bin "/usr/local/opt/terraform@0.13/bin" $HOME/.krew/bin $PATH
 set -xg GPG_TTY (tty)
 
 # The next line updates PATH for the Google Cloud SDK.
@@ -18,3 +18,5 @@ if [ -f '/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/completion
 if [ -f '/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.fish.inc' ]; . '/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.fish.inc'; end
 
 set -xg NODE_EXTRA_CA_CERTS "/Users/airhorns/Library/Application Support/mkcert/rootCA.pem"
+
+direnv hook fish | source

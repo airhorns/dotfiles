@@ -3,6 +3,14 @@ set -ex
 
 rm -f ~/.bash_profile ~/.bashrc ~/.gitignore ~/.gitconfig ~/.gvimrc ~/.vimrc ~/.vim ~/.toprc ~/.screenrc ~/.rdebugrc ~/.ackrc ~/.rdebugrc ~/.ctags ~/.pryrc ~/.gemrc
 
+if [ "$(expr substr $(uname -s) 1 5)" == "Linux" ]; then
+    sudo apt-get update
+    sudo apt-get install -f -y git fish ctags autojump vim-nox curl rbenv terminator chromium docker
+    chsh -s /usr/bin/fish
+    fish -c "fisher"
+    git clone https://github.com/pyenv/pyenv.git ~/.pyenv
+fi
+
 ln -vs ~/dotfiles/bash/bash_profile ~/.bash_profile
 ln -vs ~/dotfiles/bash/bashrc ~/.bashrc
 ln -vs ~/dotfiles/git/gitignore ~/.gitignore
@@ -23,8 +31,6 @@ ln -fvs ~/dotfiles/fish ~/.config
 
 mkdir -p ~/.lein/
 ln -fvs ~/dotfiles/leinrc ~/.lein/leinrc
-
-ln -fvs ~/dotfiles/atom ~/.atom
 
 git config --global core.excludesfile ~/.gitignore
 mkdir -p ~/.vim_backup
