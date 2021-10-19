@@ -5,10 +5,9 @@ rm -f ~/.bash_profile ~/.bashrc ~/.gitignore ~/.gitconfig ~/.gvimrc ~/.vimrc ~/.
 
 if [ "$(expr substr $(uname -s) 1 5)" == "Linux" ]; then
     sudo apt-get update
-    sudo apt-get install -f -y git fish ctags autojump vim-nox curl rbenv terminator chromium docker
+    sudo apt-get install -f -y git fish autojump vim-nox curl
     chsh -s /usr/bin/fish
     fish -c "fisher"
-    git clone https://github.com/pyenv/pyenv.git ~/.pyenv
 fi
 
 ln -vs ~/dotfiles/bash/bash_profile ~/.bash_profile
@@ -36,5 +35,3 @@ git config --global core.excludesfile ~/.gitignore
 mkdir -p ~/.vim_backup
 
 mkdir -p ~/bin
-pip install virtualfish
-
