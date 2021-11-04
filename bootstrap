@@ -6,9 +6,12 @@ rm -f ~/.bash_profile ~/.bashrc ~/.gitignore ~/.gitconfig ~/.gvimrc ~/.vimrc ~/.
 if [ "$(expr substr $(uname -s) 1 5)" == "Linux" ]; then
     sudo apt-get update
     sudo apt-get install -f -y git fish autojump vim-nox curl
-    chsh -s /usr/bin/fish
-    fish -c "fisher"
+else
+    ./homebrews.sh
 fi
+
+chsh -s /usr/bin/fish
+fish -c "curl -sL https://git.io/fisher | source && fisher install jorgebucaran/fisher"
 
 ln -vs ~/dotfiles/bash/bash_profile ~/.bash_profile
 ln -vs ~/dotfiles/bash/bashrc ~/.bashrc
