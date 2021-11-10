@@ -1,6 +1,8 @@
 #!/usr/bin/env bash
 set -ex
 
+DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+
 rm -f ~/.bash_profile ~/.bashrc ~/.gitignore ~/.gitconfig ~/.gvimrc ~/.vimrc ~/.vim ~/.toprc ~/.screenrc ~/.rdebugrc ~/.ackrc ~/.rdebugrc ~/.ctags ~/.pryrc ~/.gemrc
 
 if [ "$(expr substr $(uname -s) 1 5)" == "Linux" ]; then
@@ -11,28 +13,29 @@ else
 fi
 
 chsh -s /usr/bin/fish
-fish -c "curl -sL https://git.io/fisher | source && fisher install jorgebucaran/fisher"
 
-ln -vs ~/dotfiles/bash/bash_profile ~/.bash_profile
-ln -vs ~/dotfiles/bash/bashrc ~/.bashrc
-ln -vs ~/dotfiles/git/gitignore ~/.gitignore
-ln -vs ~/dotfiles/git/gitconfig ~/.gitconfig
-ln -vs ~/dotfiles/vim/gvimrc ~/.gvimrc
-ln -vs ~/dotfiles/vim/vimrc ~/.vimrc
-ln -vs ~/dotfiles/vim/ ~/.vim
-ln -vs ~/dotfiles/screenrc ~/.screenrc
-ln -vs ~/dotfiles/toprc ~/.toprc
-ln -vs ~/dotfiles/ackrc ~/.ackrc
-ln -vs ~/dotfiles/rdebugrc ~/.rdebugrc
-ln -vs ~/dotfiles/ctags ~/.ctags
-ln -vs ~/dotfiles/pryrc ~/.pryrc
-ln -vs ~/dotfiles/gemrc ~/.gemrc
+
+ln -vs $DIR/bash/bash_profile ~/.bash_profile
+ln -vs $DIR/bash/bashrc ~/.bashrc
+ln -vs $DIR/git/gitignore ~/.gitignore
+ln -vs $DIR/git/gitconfig ~/.gitconfig
+ln -vs $DIR/vim/gvimrc ~/.gvimrc
+ln -vs $DIR/vim/vimrc ~/.vimrc
+ln -vs $DIR/vim/ ~/.vim
+ln -vs $DIR/screenrc ~/.screenrc
+ln -vs $DIR/toprc ~/.toprc
+ln -vs $DIR/ackrc ~/.ackrc
+ln -vs $DIR/rdebugrc ~/.rdebugrc
+ln -vs $DIR/ctags ~/.ctags
+ln -vs $DIR/pryrc ~/.pryrc
+ln -vs $DIR/gemrc ~/.gemrc
 
 mkdir -p ~/.config/
-ln -fvs ~/dotfiles/fish ~/.config
+ln -fvs $DIR/fish ~/.config
+fish -c "fisher install jorgebucaran/fisher"
 
 mkdir -p ~/.lein/
-ln -fvs ~/dotfiles/leinrc ~/.lein/leinrc
+ln -fvs $DIR/leinrc ~/.lein/leinrc
 
 git config --global core.excludesfile ~/.gitignore
 mkdir -p ~/.vim_backup
