@@ -14,7 +14,6 @@ fi
 
 chsh -s /usr/bin/fish
 
-
 ln -vs $DIR/bash/bash_profile ~/.bash_profile
 ln -vs $DIR/bash/bashrc ~/.bashrc
 ln -vs $DIR/git/gitignore ~/.gitignore
@@ -32,7 +31,7 @@ ln -vs $DIR/gemrc ~/.gemrc
 
 mkdir -p ~/.config/
 ln -fvs $DIR/fish ~/.config
-fish -c "fisher install jorgebucaran/fisher"
+fish -c "fisher install jorgebucaran/fisher lilyball/nix-env"
 
 mkdir -p ~/.lein/
 ln -fvs $DIR/leinrc ~/.lein/leinrc
