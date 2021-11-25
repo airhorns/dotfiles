@@ -31,7 +31,7 @@ ln -vs $DIR/gemrc ~/.gemrc
 
 mkdir -p ~/.config/
 ln -fvs $DIR/fish ~/.config
-fish -c "fisher install jorgebucaran/fisher lilyball/nix-env"
+fish -c "fisher install jorgebucaran/fisher lilyball/nix-env.fish"
 
 mkdir -p ~/.lein/
 ln -fvs $DIR/leinrc ~/.lein/leinrc
