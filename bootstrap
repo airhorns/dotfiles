@@ -6,8 +6,8 @@ DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 rm -f ~/.bash_profile ~/.bashrc ~/.gitignore ~/.gitconfig ~/.gvimrc ~/.vimrc ~/.vim ~/.toprc ~/.screenrc ~/.rdebugrc ~/.ackrc ~/.rdebugrc ~/.ctags ~/.pryrc ~/.gemrc
 
 if [ "$(expr substr $(uname -s) 1 5)" == "Linux" ]; then
-    sudo apt-get update
     sudo apt-get install -f -y git fish autojump vim-nox curl
+    sudo apt-get update
 else
     ./homebrews.sh
 fi
@@ -31,7 +31,8 @@ ln -vs $DIR/gemrc ~/.gemrc
 
 mkdir -p ~/.config/
 ln -fvs $DIR/fish ~/.config
-fish -c "fisher install jorgebucaran/fisher lilyball/nix-env.fish"
+fish -c "fisher install jorgebucaran/fisher"
+fish -c "fisher install lilyball/nix-env.fish"
 
 mkdir -p ~/.lein/
 ln -fvs $DIR/leinrc ~/.lein/leinrc
