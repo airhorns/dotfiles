@@ -42,7 +42,7 @@
   caa = commit -a --amend -C HEAD
   cah = commit --amend --reuse-message=HEAD
   caah = commit --all --amend --reuse-message=HEAD
-  cip = commit -a -m "WIP"
+  cip = commit -a --fixup 
 
   # Mother of all aliases
   cap = "!git commit --all --amend --reuse-message=HEAD && git push origin --force"
