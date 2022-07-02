@@ -27,9 +27,6 @@
   po = "!git push --set-upstream origin \"$(git rev-parse --abbrev-ref HEAD)\""
   remove-merged = "!git branch --merged | grep -v \"\\*\" | xargs -n 1 git branch -d"
 
-  # I like using the interactive mode to make complex commits
-  ai = add --interactive
-
   # All the aliases relate to commits. Note that
   # they are grouped by common prefixes, so I don't
   # confuse what I want done by accident.
@@ -45,7 +42,6 @@
   cip = commit -a --fixup 
 
   # Mother of all aliases
-  cap = "!git commit --all --amend --reuse-message=HEAD && git push origin --force"
   cahpof = "!git commit --all --amend --reuse-message=HEAD && git push origin --force"
 
   # reset
@@ -81,6 +77,7 @@
 
   rmpof = "!git rebase main && git push origin --force"
   rimpof = "!git rebase --interactive main && git push origin --force"
+  rempof = "!git rebase main && git push origin --force"
 	up = pull --rebase --autostash
 
 [difftool "Kaleidoscope"]
