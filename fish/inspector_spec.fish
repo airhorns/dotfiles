@@ -19,4 +19,4 @@ if [ -f '/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.fish.
 
 set -xg NODE_EXTRA_CA_CERTS "/Users/airhorns/Library/Application Support/mkcert/rootCA.pem"
 
-direnv hook fish | source
+which direnv > /dev/null; and direnv hook fish | source

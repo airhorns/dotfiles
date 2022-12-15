@@ -6,4 +6,4 @@ set -xg CFLAGS "-I$openssl_prefix/include"
 set -xg LDFLAGS "-L$openssl_prefix/lib"
 set -xg EDITOR "code --wait"
 
-direnv hook fish | source
+which direnv > /dev/null; and direnv hook fish | source
