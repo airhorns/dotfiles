@@ -1,1 +1,47 @@
-/Users/airhorns/Library/Mobile Documents/com~apple~CloudDocs/Mackup/.config/fish/config.fish
+if status --is-login
+  if test -d "$HOME/bin"
+    set -xg PATH "$HOME/bin" $PATH
+  end
+
+  if test -d "$HOME/Code/go/bin"
+    set -xg PATH "$HOME/Code/go/bin" $PATH
+  end
+
+  if test -d "/usr/local/sbin"
+    set -xg PATH $PATH "/usr/local/sbin"
+  end
+
+  if test -d "/usr/local/heroku/bin"
+    set -xg PATH $PATH "/usr/local/heroku/bin"
+  end
+end
+
+set -xg EDITOR "vim"
+set -xg BUNDLE_EDITOR "vim"
+set -xg NODE_PATH "/usr/local/lib/node" $NODE_PATH
+set -xg GOPATH "$HOME/Code/go" $GOPATH
+set -xg PAGER "less"
+set -xg VIRTUAL_ENV_DISABLE_PROMPT 1 # let the fish_prompt function display the virtualenv
+alias vi vim
+alias k kubectl
+set fish_greeting ""
+
+set --local host_spec $HOME/dotfiles/fish/(hostname -s)_spec.fish
+if test -f "$host_spec"
+  source $host_spec
+end
+
+if string match -r codespaces (hostname -s)
+  source $HOME/dotfiles/fish/codespaces_spec.fish
+end
+
+if test -f "~/.profile"
+  bass source ~/.profile
+end
+
+if [ -f /usr/local/share/autojump/autojump.fish ]
+  source /usr/local/share/autojump/autojump.fish
+end
+
+set -gx VOLTA_HOME "$HOME/.volta"
+set -gx PATH "$VOLTA_HOME/bin" $PATH

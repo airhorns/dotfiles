@@ -7,6 +7,7 @@ fish/hook
 fish/functions
 fish/completions
 fish/conf.d
+fish/fish_variables
 
 atom/.apm
 atom/.node-gyp

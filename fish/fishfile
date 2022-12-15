@@ -1,1 +1,9 @@
-/Users/airhorns/Library/Mobile Documents/com~apple~CloudDocs/Mackup/.config/fish/fishfile
+edc/bass
+jorgebucaran/getopts
+kennethreitz/fish-pipenv
+daenney/pyenv
+daenney/rbenv
+oh-my-fish/plugin-bundler
+oh-my-fish/plugin-rails
+jorgebucaran/fish-nvm
+lilyball/nix-env.fish
