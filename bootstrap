@@ -32,7 +32,7 @@ ln -vs $DIR/gemrc ~/.gemrc
 mkdir -p ~/.config/
 ln -fvs $DIR/fish ~/.config
 fish -c "curl -sL https://git.io/fisher | source && fisher install jorgebucaran/fisher"
-fish -c "fisher install lilyball/nix-env.fish"
+fish -c "fisher update"
 
 mkdir -p ~/.lein/
 ln -fvs $DIR/leinrc ~/.lein/leinrc

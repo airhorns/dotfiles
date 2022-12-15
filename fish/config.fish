@@ -1,19 +1,21 @@
-if status --is-login
-  if test -d "$HOME/bin"
-    set -xg PATH "$HOME/bin" $PATH
-  end
+if not status --is-interactive
+	exit
+end
 
-  if test -d "$HOME/Code/go/bin"
-    set -xg PATH "$HOME/Code/go/bin" $PATH
-  end
+if test -d "$HOME/bin"
+  set -xg PATH "$HOME/bin" $PATH
+end
 
-  if test -d "/usr/local/sbin"
-    set -xg PATH $PATH "/usr/local/sbin"
-  end
+if test -d "$HOME/Code/go/bin"
+  set -xg PATH "$HOME/Code/go/bin" $PATH
+end
 
-  if test -d "/usr/local/heroku/bin"
-    set -xg PATH $PATH "/usr/local/heroku/bin"
-  end
+if test -d "/usr/local/sbin"
+  set -xg PATH $PATH "/usr/local/sbin"
+end
+
+if test -d "/usr/local/heroku/bin"
+  set -xg PATH $PATH "/usr/local/heroku/bin"
 end
 
 set -xg EDITOR "vim"
@@ -26,13 +28,14 @@ alias vi vim
 alias k kubectl
 set fish_greeting ""
 
-set --local host_spec $HOME/dotfiles/fish/(hostname -s)_spec.fish
+set --local fish_dir (dirname (status --current-filename))
+set --local host_spec $fish_dir/(hostname -s)_spec.fish
 if test -f "$host_spec"
   source $host_spec
 end
 
 if string match -r codespaces (hostname -s)
-  source $HOME/dotfiles/fish/codespaces_spec.fish
+  source $fish_dir/codespaces_spec.fish
 end
 
 if test -f "~/.profile"
