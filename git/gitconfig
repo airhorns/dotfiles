@@ -39,7 +39,8 @@
   caa = commit -a --amend -C HEAD
   cah = commit --amend --reuse-message=HEAD
   caah = commit --all --amend --reuse-message=HEAD
-  cip = commit -a --fixup 
+  cip = commit -m="WIP" -a
+  fip = commit -a --fixup=HEAD
 
   # Mother of all aliases
   cahpof = "!git commit --all --amend --reuse-message=HEAD && git push origin --force"
@@ -111,6 +112,7 @@ protocol = https
 	helper = osxkeychain
 [push]
 	default = simple
+	autoSetupRemote = true
 [filter "hawser"]
 	clean = git hawser clean %f
 	smudge = git hawser smudge %f
@@ -123,3 +125,5 @@ protocol = https
 	program = /usr/local/bin/gpg
 [commit]
 	gpgsign = true
+[init]
+	defaultBranch = main

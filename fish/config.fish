@@ -45,6 +45,3 @@ end
 if [ -f /usr/local/share/autojump/autojump.fish ]
   source /usr/local/share/autojump/autojump.fish
 end
-
-set -gx VOLTA_HOME "$HOME/.volta"
-set -gx PATH "$VOLTA_HOME/bin" $PATH
