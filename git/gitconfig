@@ -1,10 +1,7 @@
 [user]
 	name = Harry Brundage
 	email = harry.brundage@gmail.com
-	signingkey = 2660E985022D88D2
-[github]
-	user = hornairs
-	password = !security 2>&1 >/dev/null find-generic-password -gs github.password | ruby -e 'print $1 if STDIN.gets =~ /^password: \\\\\"(.*)\\\\\"$/'
+	signingkey = ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIJvOa9KKorTmbk3f6YcsPPKjRatbc8TCsh4pXxUDLr/X
 [color]
   branch = auto
   diff = auto
@@ -39,11 +36,13 @@
   caa = commit -a --amend -C HEAD
   cah = commit --amend --reuse-message=HEAD
   caah = commit --all --amend --reuse-message=HEAD
-  cip = commit -m="WIP" -a
+  cip = "!git commit --message \"WIP - $(hostname) $(TZ=America/Toronto date +'%a, %b %d %I:%M %p') \n\n[no-changelog-required]\" -a"
   fip = commit -a --fixup=HEAD
 
   # Mother of all aliases
   cahpof = "!git commit --all --amend --reuse-message=HEAD && git push origin --force"
+
+  mainup = "!git checkout main && git pull --rebase --autostash && git checkout - && git rebase main"
 
   # reset
   ## soft resets
@@ -80,6 +79,12 @@
   rimpof = "!git rebase --interactive main && git push origin --force"
   rempof = "!git rebase main && git push origin --force"
 	up = pull --rebase --autostash
+	next = stack next
+	prev = stack previous
+	reword = stack reword
+	amend = stack amend
+	sync = stack sync
+	run = stack run
 
 [difftool "Kaleidoscope"]
 	cmd = ksdiff --partial-changeset --relative-path \"$MERGED\" -- \"$LOCAL\" \"$REMOTE\"
@@ -105,9 +110,8 @@ trustExitCode = true
 	prompt = false
 [core]
 	excludesfile = /Users/airhorns/.gitignore
-
 [hub]
-protocol = https
+  protocol = https
 [credential]
 	helper = osxkeychain
 [push]
@@ -122,8 +126,14 @@ protocol = https
 [fetch]
 	prune = true
 [gpg]
-	program = /usr/local/bin/gpg
+	format = ssh
 [commit]
 	gpgsign = true
 [init]
 	defaultBranch = main
+[rebase]
+  autoSquash = true
+[gpg "ssh"]
+	program = /Applications/1Password.app/Contents/MacOS/op-ssh-sign
+[absorb]
+  autoStageIfNothingStaged = true

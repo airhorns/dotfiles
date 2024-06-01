@@ -17,4 +17,3 @@ source '/Users/hornairs/google-cloud-sdk/path.bash.inc'
 
 # The next line enables shell command completion for gcloud.
 source '/Users/hornairs/google-cloud-sdk/completion.bash.inc'
-if [[ -f /opt/dev/dev.sh ]]; then source /opt/dev/dev.sh; fi

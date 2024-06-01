@@ -42,6 +42,11 @@ if test -f "~/.profile"
   bass source ~/.profile
 end
 
-if [ -f /usr/local/share/autojump/autojump.fish ]
-  source /usr/local/share/autojump/autojump.fish
+[ -f /opt/homebrew/share/autojump/autojump.fish ]; and source /opt/homebrew/share/autojump/autojump.fish
+
+# pnpm
+set -gx PNPM_HOME "/Users/airhorns/Library/pnpm"
+if not string match -q -- $PNPM_HOME $PATH
+  set -gx PATH "$PNPM_HOME" $PATH
 end
+# pnpm end

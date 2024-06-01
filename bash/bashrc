@@ -96,7 +96,7 @@ if [ -f "$HOME/dotfiles/bash/bash_aliases" ]; then
     . "$HOME/dotfiles/bash/bash_aliases"
 fi
 
-export PATH="$HOME/bin":"/usr/local/bin":"/usr/local/sbin":"./node_modules/.bin":$PATH:"/usr/local/share/npm/bin"
+export PATH="$HOME/bin":"/usr/local/bin":"/opt/homebrew/bin":"/usr/local/sbin":"./node_modules/.bin":$PATH:"/usr/local/share/npm/bin"
 export EDITOR="vim"
 export BUNDLE_EDITOR="vim"
 export NODE_PATH="/usr/local/lib/node":$NODE_PATH
@@ -108,11 +108,11 @@ if [ -f "$host_spec" ]; then
   source "$host_spec"
 fi
 
-# load dev, but only if present and the shell is interactive
-if [[ -f /opt/dev/dev.sh ]] && [[ $- == *i* ]]; then
-  source /opt/dev/dev.sh
-fi
-
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+# source cargo
+if [ -f "$HOME/.cargo/env" ]; then 
+  source "$HOME/.cargo/env"
+fi
