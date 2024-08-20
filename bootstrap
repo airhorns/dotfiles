@@ -12,7 +12,8 @@ else
     ./homebrews.sh
 fi
 
-chsh -s /usr/bin/fish
+echo $(which fish) | sudo tee -a /etc/shells
+chsh -s $(which fish)
 
 ln -vs $DIR/bash/bash_profile ~/.bash_profile
 ln -vs $DIR/bash/bashrc ~/.bashrc

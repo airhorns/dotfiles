@@ -1,7 +1,7 @@
 [user]
 	name = Harry Brundage
 	email = harry.brundage@gmail.com
-	signingkey = ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIJvOa9KKorTmbk3f6YcsPPKjRatbc8TCsh4pXxUDLr/X
+	signingkey = ~/.ssh/id_ed25519.pub
 [color]
   branch = auto
   diff = auto
@@ -133,7 +133,5 @@ trustExitCode = true
 	defaultBranch = main
 [rebase]
   autoSquash = true
-[gpg "ssh"]
-	program = /Applications/1Password.app/Contents/MacOS/op-ssh-sign
 [absorb]
   autoStageIfNothingStaged = true
