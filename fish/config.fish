@@ -34,6 +34,10 @@ if test -f "$host_spec"
   source $host_spec
 end
 
+if test -f "/.dockerenv"
+  source $fish_dir/devcontainer_spec.fish
+end
+
 if string match -r codespaces (hostname -s)
   source $fish_dir/codespaces_spec.fish
 end
