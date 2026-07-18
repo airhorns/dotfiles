@@ -11,3 +11,4 @@
 .vscode
 server/core/management/commands/scratch.py
 docker/es-data
+.direnv

@@ -32,5 +32,3 @@ set -gx PATH "$PNPM_HOME" $PATH
 # pnpm end
 
 which direnv > /dev/null; and direnv hook fish | source
-
-set -q KREW_ROOT; and set -gx PATH $PATH $KREW_ROOT/.krew/bin; or set -gx PATH $PATH $HOME/.krew/bin
